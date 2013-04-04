@@ -35,6 +35,7 @@
               <actionMethod actionName="addUser"/>
               <actionMethod actionName="editUser"/>
               <actionMethod actionName="userList"/>
+              <actionMethod actionName="profile"/>
             </controllerFile>
             <controllerFile controllerName="Gallery">
               <actionMethod actionName="index"/>
@@ -100,6 +101,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Index">
                 <viewScriptFile forActionName="logout"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="User">
+                <viewScriptFile forActionName="profile"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

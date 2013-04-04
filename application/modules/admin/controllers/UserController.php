@@ -6,14 +6,14 @@ class Admin_UserController extends Zend_Controller_Action {
         /* Initialize action controller here */
         $this->_layout = Zend_Layout::getMvcInstance();
         $this->_layout->setLayout('admin');
-    }
-
-    public function indexAction() {
-        // action body
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_redirect(BASE_URL . 'admin/index/login');
         }
+    }
+
+    public function indexAction() {
+        // action body
     }
 
     public function addUserAction() {
@@ -52,6 +52,17 @@ class Admin_UserController extends Zend_Controller_Action {
         $userModel = new Admin_Model_TblUser();
         $userList = $userModel->GetUser();
         $this->view->UserList = $userList;
+    }
+
+    public function profileAction() {
+        // action body
+        $auth = Zend_Auth::getInstance();
+        $userId = $auth->getIdentity()->id;
+        $userModel = new Admin_Model_TblUser();
+        $userProfile = $userModel->GetUserById($userId);
+        echo '<pre>';
+        print_r($userProfile);
+        exit();
     }
 
 }
