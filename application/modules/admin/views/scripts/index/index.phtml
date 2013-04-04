@@ -1,19 +1,7 @@
 <?php $session = new Zend_Session_Namespace('Zend_Auth'); //Zend_Auth uses Zend_Session_Namespace for storage ?>
-<a href="<?php echo BASE_URL.'admin/index/logout'?>" class="btn btn-danger">Log Out</a>
-<div id='content'>
-    <a href='<?php
-    echo $this->url(array(
-        'controller' => 'user',
-        'action' => 'user-list',
-    ));
-    ;
-    ?>'>
-        <div class='section'>
-            <h4>User Management</h4> 
-            <img src="<?php echo BASE_URL; ?>img/user_mgmt.jpeg" width="100px" height="100px" class="box-border"/>
 
-        </div>
-    </a>
+<div id='content'>
+    
     <a href='<?php
     echo $this->url(array(
         'controller' => 'gallery',
