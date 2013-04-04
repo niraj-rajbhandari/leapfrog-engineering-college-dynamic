@@ -37,6 +37,8 @@ class Admin_IndexController extends Zend_Controller_Action {
                     $result = $adapter->getResultRowObject(array('id', 'user_name'));
 
                     $auth->getStorage()->write($result);
+                    print_r($auth->getIdentity());
+                    exit;
                     $this->_redirect(BASE_URL . 'admin');
                 } else {
                     $msg = 'Incorrect Username or Password';

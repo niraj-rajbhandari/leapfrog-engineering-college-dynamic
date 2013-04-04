@@ -21,54 +21,106 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
 
     public function addPostAction() {
         // action body
+        $auth = Zend_Auth::getInstance();
+        $UserId = $auth->getIdentity()->id;
         if ($this->getRequest()->isPost()) {
-
-//            $fileExtension=new Zend_Validate_File_Extension;
-//            $fileExtension->isValid($value);
             $adapter = new Zend_File_Transfer_Adapter_Http();
             $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
-                    ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico');
+                    ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico')
+                    ->addValidator('Size', FALSE, 512000)
+                    ->addValidator('Count', false, 1);
+
 
             // Returns all known internal file information
             $upload = new Zend_File_Transfer();
             $files = $upload->getFileInfo();
 
+            //set filters and validators for Zend_Filter_Input
+            $filters = array(
+                'post_title' => array('StripTags', 'StringTrim')
+            );
 
+            $validators = array(
+                'post_title' => array('NotEmpty'),
+                'post_body' => array('NotEmpty')
+            );
 
-            if ($adapter->receive() && $adapter->isValid()) {
+            //assign Input
+            $input = new Zend_Filter_Input($filters, $validators);
+            $input->setData($this->getRequest()->getParams());
+
+            if ($adapter->receive() && $adapter->isValid() && $input->isValid()) {
                 $postInfo = $this->getRequest()->getParams();
                 $postInfo['post_image'] = $files['post_image']['name'];
-
+                $postInfo['user_id'] = $UserId;
+               
                 $bool = $this->postModel->AddPost($postInfo);
                 if ($bool) {
                     echo"hello";
+                    exit;
                     //success
                     //redirect to post list
                 } else {
                     //display error
                 }
+            } else {
+                echo "error";
+                exit;
             }
         }
     }
 
     public function editPostAction() {
         // action body
+        $auth = Zend_Auth::getInstance();
+        $UserId = $auth->getIdentity()->id;
         $PostId = $this->_getParam('post-id');
         $postForm = new Admin_Form_AddPost();
         if ($this->getRequest()->isPost()) {
-            $formData = $this->getRequest()->getPost();
-            if (($postForm->isValid($formData)) && $postForm->post_image->receive()) {
-                $postInfo = $postForm->getValues();
-                echo "<pre>";
-                print_r($postInfo);
-                exit;
+            $adapter = new Zend_File_Transfer_Adapter_Http();
+            $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
+                    ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico')
+                    ->addValidator('Size', FALSE, 512000)
+                    ->addValidator('Count', false, 1);
+
+
+            // Returns all known internal file information
+            $upload = new Zend_File_Transfer();
+            $files = $upload->getFileInfo();
+
+            //set filters and validators for Zend_Filter_Input
+            $filters = array(
+                'post_title' => array('StripTags', 'StringTrim')
+            );
+
+            $validators = array(
+                'post_title' => array('NotEmpty'),
+                'post_body' => array('NotEmpty')
+            );
+
+            //assign Input
+            $input = new Zend_Filter_Input($filters, $validators);
+            $input->setData($this->getRequest()->getParams());
+
+            if ($adapter->receive() && $adapter->isValid() && $input->isValid()) {
+                $postInfo = $this->getRequest()->getParams();
+                $postInfo['post_image'] = $files['post_image']['name'];
+                $postInfo['user_id'] = $UserId;
+
                 $bool = $this->postModel->EditPost($PostId, $postInfo);
                 if ($bool) {
+                    echo"hello";
+                    exit;
                     //success
                     //redirect to post list
                 } else {
+                    echo "db_error";
+                    exit;
                     //display error
                 }
+            } else {
+                echo "error";
+                exit;
             }
         }
 
