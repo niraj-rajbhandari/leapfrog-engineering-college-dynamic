@@ -148,6 +148,14 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
         $postList = $this->postModel->ListPost();
         $this->view->postList = $postList;
     }
+    
+    //naresh
+    
+    
+    //sudip
+    
+    
+    //niraj
 
 }
 
