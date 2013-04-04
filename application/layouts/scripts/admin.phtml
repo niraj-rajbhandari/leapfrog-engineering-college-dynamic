@@ -1,3 +1,10 @@
+<?
+$auth = Zend_Auth::getInstance();
+if ($auth->hasIdentity()) {
+    $username = $auth->getIdentity()->user_name;
+}
+?>
+
 <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/style.css"/> 
 <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/bootstrap-responsive.min.css"/>
@@ -7,10 +14,10 @@
         <div id="Header">            
             <img src="<?php echo BASE_URL; ?>img/banner.jpg"/>
             <?php
-            if (isset($_SESSION['id'])):
+            if ($auth->hasIdentity()):
                 ?>
                 <div id="log-out">
-                    <font>Welcome!!</font><a href="<?php echo BASE_URL . '/admin/user/profile' ?>"><?php echo $_SESSION['username']; ?></a>
+                    <font>Welcome!!</font><a href="<?php echo BASE_URL . '/admin/user/profile' ?>"><?php echo $username; ?></a>
                     <a href="<?php echo BASE_URL; ?>admin/">Home</a>
                     <a href="<?php echo BASE_URL; ?>admin/user/logout">Log Out</a>
                 </div>
