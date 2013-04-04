@@ -151,6 +151,8 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
     
     //naresh
     
+    public function nareshAction()
+    {}
     
     //sudip
     
