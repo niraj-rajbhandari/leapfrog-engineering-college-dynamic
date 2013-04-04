@@ -1,11 +1,75 @@
-
-<script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+<?php $post_data = $this->postValues; ?>
+<title>Edit Posts</title>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>ckeditor/ckeditor.js"></script>
 <div class="container">
-    <div class="span8">
 
-        <?php echo $this->postForm; ?>
 
-    </div>    
+
+    <h4>Edit Posts  <a href="<?php echo BASE_URL; ?>admin/content-management/post-list" class="btn btn-info btn-small">View Posts</a></h4>
+
+    <table class="table">
+        <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL; ?>admin/content-management/edit-post/post-id/<?php echo $post_data['id']; ?>">
+            <tr>
+                <td class="span2">Title:</td>
+                <td class="span8">
+                    <input type="text" name="post_title" value="<?php echo $post_data['post_title'] ?>"/>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="span2">Type:</td>
+                <td class="span8">
+                    <?php $postType = array('post' => 'Post', 'news' => 'News & Events', 'facilities' => 'Facilities'); ?>
+                    <select name="post_type">
+                        <?php
+                        foreach ($postType as $key => $option) :  // run through our array of provinces
+                            $selected = ($key === $post_data['post_type']) ? 'selected' : '';
+                            ?>         
+                            <option value="<?php echo $key; ?>" <?php echo $selected; ?>><?php echo $option; ?></option>
+
+                        <?php endforeach; ?>
+                    </select>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td class="span2">Image:</td>
+                <td class="span8">
+                    <input type="file" name="post_image"/>
+                    <img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $post_data['post_image']; ?>" width="150px" height="150px"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2">Body:</td>
+                <td class="span8"><textarea id="post_body" name="post_body" ><?php echo $post_data['post_body'] ?></textarea></td>
+            </tr>
+            <tr>
+                <?php 
+                    $checked1=($post_data['active']==1)?'checked':'';
+                    $checked2=($post_data['active']==0)?'checked':'';
+                ?>
+                <td>Publish:</td>
+                <td>
+                    <label class="radio inline">Yes</label>
+                    <input type="radio" class="radio" name="active" <?php echo $checked1;?> value="Yes"/>
+                    <label class="radio inline">No</label>
+                    <input type="radio" class="radio" name="active" <?php echo $checked2;?> value="No"/>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Edit Post" class="btn btn-inverse "/></td>
+            </tr>
+
+        </form>    
+    </table>
+
+
+
+</div>    
 </div>
 
 <script type="text/javascript">

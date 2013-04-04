@@ -18,6 +18,10 @@ set_include_path(implode(PATH_SEPARATOR, array(
 $baseurl="http://".$_SERVER['HTTP_HOST'].'/';
 define('BASE_URL',$baseurl);
 
+//Define Base Path
+$basepath=$_SERVER['DOCUMENT_ROOT'].'/';
+define('BASE_PATH',$basepath);
+
 /** Zend_Application */
 require_once '../library/Zend/Application.php';
 

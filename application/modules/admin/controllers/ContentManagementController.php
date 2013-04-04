@@ -2,7 +2,7 @@
 
 class Admin_ContentManagementController extends Zend_Controller_Action {
 
-    private $postModel;
+    private $postModel = null;
 
     public function init() {
         /* Initialize action controller here */
@@ -17,7 +17,6 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
 
     public function indexAction() {
         // action body
-        
     }
 
     public function addPostAction() {
@@ -51,32 +50,40 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
             $input->setData($this->getRequest()->getParams());
 
             if ($adapter->receive() && $adapter->isValid() && $input->isValid()) {
-                $postInfo = $this->getRequest()->getParams();
+                $postData = $this->getRequest()->getParams();
+                $active = ($postData['active'] == 'Yes') ? 1 : 0;
+
+                $postInfo['post_title'] = $postData['post_title'];
+                $postInfo['post_type'] = $postData['post_type'];
                 $postInfo['post_image'] = $files['post_image']['name'];
+                $postInfo['post_body'] = $postData['post_body'];
                 $postInfo['user_id'] = $UserId;
+                $postInfo['active'] = $active;
+
 
                 $bool = $this->postModel->AddPost($postInfo);
                 if ($bool) {
-                    echo"hello";
-                    exit;
                     //success
                     //redirect to post list
+                    $msg = "Post was successfully added";
+                    $this->_redirect(BASE_URL . 'admin/content-management/post-list');
                 } else {
                     //display error
+                    $msg = "Post could not be added. Please try again";
                 }
-            } else {
-                echo "error";
-                exit;
             }
         }
     }
 
     public function editPostAction() {
         // action body
+        //get authentic user id
         $auth = Zend_Auth::getInstance();
         $UserId = $auth->getIdentity()->id;
+
+        //get post id from the url
         $PostId = $this->_getParam('post-id');
-        $postForm = new Admin_Form_AddPost();
+
         if ($this->getRequest()->isPost()) {
             $adapter = new Zend_File_Transfer_Adapter_Http();
             $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
@@ -89,6 +96,13 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
             $upload = new Zend_File_Transfer();
             $files = $upload->getFileInfo();
 
+            //check validation if post image is edited
+            $imageReceive = TRUE;
+            if ($files['post_image']['error'] != 4) {
+                if (!$adapter->receive() && !$adapter->isValid()) {
+                    $imageReceive = FALSE;
+                }
+            }
             //set filters and validators for Zend_Filter_Input
             $filters = array(
                 'post_title' => array('StripTags', 'StringTrim')
@@ -103,43 +117,57 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
             $input = new Zend_Filter_Input($filters, $validators);
             $input->setData($this->getRequest()->getParams());
 
-            if ($adapter->receive() && $adapter->isValid() && $input->isValid()) {
-                $postInfo = $this->getRequest()->getParams();
-                $postInfo['post_image'] = $files['post_image']['name'];
+            if ($imageReceive && $input->isValid()) {
+                $postData = $this->getRequest()->getParams();
+
+                $active = ($postData['active'] == 'Yes') ? 1 : 0;
+
+                $postInfo['post_title'] = $postData['post_title'];
+                $postInfo['post_type'] = $postData['post_type'];
+                if ($files['post_image']['error'] != 4) {
+                   
+                    //delete the old image if image is edited
+                    $postImage=$this->postModel->GetPostById($PostId);
+                    unlink(BASE_PATH.'img/uploads/'.$postImage['post_image']);
+                    //----------------------------------------------------------
+                    
+                    $postInfo['post_image'] = $files['post_image']['name'];
+                }
+                $postInfo['post_body'] = $postData['post_body'];
                 $postInfo['user_id'] = $UserId;
+                $postInfo['active'] = $active;
 
                 $bool = $this->postModel->EditPost($PostId, $postInfo);
                 if ($bool) {
-                    echo"hello";
-                    exit;
                     //success
-                    //redirect to post list
+                    $msg = "Post was successfully edited";
+                    $this->_redirect(BASE_URL . 'admin/content-management/post-list');
                 } else {
-                    echo "db_error";
-                    exit;
                     //display error
+                    $msg = "Post could not be edited. Try Again";
                 }
-            } else {
-                echo "error";
-                exit;
             }
         }
-
         $postValues = $this->postModel->GetPostById($PostId);
-
-        $postForm->populate($postValues);
-        $this->view->postForm = $postForm;
+        $this->view->postValues = $postValues;
     }
 
     public function deletePostAction() {
         // action body
         $PostId = $this->_getParam('post-id');
+        $postInfo=$this->postModel->GetPostById($PostId);
+        
         $bool = $this->postModel->DeletePost($PostId);
         if ($bool) {
             //success
+            $msg = "successfuly deleted";
+            //remove image of the post being deleted
+            unlink(BASE_PATH.'img/uploads/'.$postInfo['post_image']);
             //redirect to post list
+            $this->_redirect(BASE_URL . 'admin/content-management/post-list');
         } else {
             //display error
+            $msg = "The post could not be deleted. Please try again";
         }
     }
 
@@ -148,19 +176,12 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
         $postList = $this->postModel->ListPost();
         $this->view->postList = $postList;
     }
-    
-    //naresh
-    
-    public function nareshAction()
-    {}
-    
-    //sudip
-    
-    
-    //niraj
-        public function herAction()
-        {
-            
-        }
+
+    public function updatePublishPostAction() {
+        // action body
+        print_r($this->getRequest()->getPost());
+        exit;
+    }
+
 }
 
