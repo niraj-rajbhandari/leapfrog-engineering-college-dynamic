@@ -13,6 +13,27 @@ class Admin_GalleryController extends Zend_Controller_Action
         // action body
     }
 
+    public function addAlbumAction()
+    {
+        // action body
+    }
+
+    public function editAlbumAction()
+    {
+        // action body
+    }
+
+    public function deleteAlbumAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
 
