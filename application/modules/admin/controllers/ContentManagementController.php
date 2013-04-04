@@ -9,14 +9,14 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
         $this->_layout = Zend_Layout::getMvcInstance();
         $this->_layout->setLayout('admin');
         $this->postModel = new Admin_Model_Post();
-    }
-
-    public function indexAction() {
-        // action body
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
             $this->_redirect(BASE_URL . 'admin/index/login');
         }
+    }
+
+    public function indexAction() {
+        // action body
     }
 
     public function addPostAction() {
@@ -53,7 +53,7 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
                 $postInfo = $this->getRequest()->getParams();
                 $postInfo['post_image'] = $files['post_image']['name'];
                 $postInfo['user_id'] = $UserId;
-               
+
                 $bool = $this->postModel->AddPost($postInfo);
                 if ($bool) {
                     echo"hello";
