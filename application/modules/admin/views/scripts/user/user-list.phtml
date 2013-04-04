@@ -1,0 +1,47 @@
+<?php $session = new Zend_Session_Namespace('Zend_Auth'); //Zend_Auth uses Zend_Session_Namespace for storage ?>
+<h4>User Information</h4>
+<hr>
+<div id="add-user">
+    <a href="<?php echo BASE_URL; ?>admin/user/add-user" class="btn btn-block btn-info">Add User</a>
+</div>
+<div class="display-table">
+    <table  id="user-list"> 
+        <thead >
+        <th>ID</th>
+        <th>Name</th>
+        <th>User Name</th>
+        <th>Action</th>
+        </thead>
+
+        <?php
+        $data = $this->UserList;
+        if (!empty($data)):
+            foreach ($data as $value):
+                ?>
+                <tbody>
+                <td><?php echo $value['id']; ?></td>
+                <?php $name = ($value['middle_name'] != '') ? $value['first_name'] . ' ' . $value['middle_name'] . ' ' . $value['last_name'] : $value['first_name'] . ' ' . $value['last_name']; ?>
+                <td><?php echo $name; ?></td>
+                <td><?php echo $value['user_name']; ?></td> 
+                <?php
+                $edit_link = $this->url(array(
+                    'controller' => 'user',
+                    'action' => 'edit-user',
+                    'user-id'=>7
+                ));
+                ?>
+                <?php
+                $delete_link = $this->url(array(
+                    'controller' => 'user',
+                    'action' => 'delete-user',
+                    'id'=>7));
+                ?>
+                <td> <a href='<?php echo $edit_link; ?>'>Edit</a> | <a href="<?php echo $delete_link; ?>" onclick="return alert_delete()">Delete</a> </td>
+                </tbody>
+                <?php
+            endforeach;
+        endif;
+        ?>
+    </table>
+
+</div>
