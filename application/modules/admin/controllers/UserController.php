@@ -10,6 +10,10 @@ class Admin_UserController extends Zend_Controller_Action {
 
     public function indexAction() {
         // action body
+        $auth = Zend_Auth::getInstance();
+        if (!$auth->hasIdentity()) {
+            $this->_redirect(BASE_URL . 'admin/index/login');
+        }
     }
 
     public function addUserAction() {

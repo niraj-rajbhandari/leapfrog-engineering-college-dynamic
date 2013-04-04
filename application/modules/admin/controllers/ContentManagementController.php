@@ -9,33 +9,36 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
         $this->_layout = Zend_Layout::getMvcInstance();
         $this->_layout->setLayout('admin');
         $this->postModel = new Admin_Model_Post();
-        $session = new Zend_Session_Namespace('Zend_Auth');
-        if(!isset($session->id))
-        {
-            $this->_redirect(BASE_URL.'admin/index/login');
-        }
     }
 
     public function indexAction() {
         // action body
+        $auth = Zend_Auth::getInstance();
+        if (!$auth->hasIdentity()) {
+            $this->_redirect(BASE_URL . 'admin/index/login');
+        }
     }
 
     public function addPostAction() {
         // action body
         if ($this->getRequest()->isPost()) {
-           
 
+//            $fileExtension=new Zend_Validate_File_Extension;
+//            $fileExtension->isValid($value);
             $adapter = new Zend_File_Transfer_Adapter_Http();
-            $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads');
-            
+            $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
+                    ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico');
+
             // Returns all known internal file information
             $upload = new Zend_File_Transfer();
             $files = $upload->getFileInfo();
 
-            if ($adapter->receive()) {
+
+
+            if ($adapter->receive() && $adapter->isValid()) {
                 $postInfo = $this->getRequest()->getParams();
-                $postInfo['post_image']=$files['post_image']['name'];
-                
+                $postInfo['post_image'] = $files['post_image']['name'];
+
                 $bool = $this->postModel->AddPost($postInfo);
                 if ($bool) {
                     echo"hello";
@@ -46,7 +49,6 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
                 }
             }
         }
-       
     }
 
     public function editPostAction() {
