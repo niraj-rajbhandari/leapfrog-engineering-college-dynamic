@@ -1,4 +1,27 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Gallery</b> and script/action name <b>addAlbum</b></p>
+
+<?php if (isset($this->messages)) {
+    ?>
+
+    <div id="flashmessenger" class="alert alert-success">
+        <? echo ($this->messages[0]); ?>
+    </div>
+
+    <?php
+}
+//sleep(3);
+//$this->_redirect(BASE_URL . 'admin/gallery');
+?>
+<div>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td>Album Name:</td>
+                <td><input type="text" name="album_name"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Add Album" class="btn  btn-primary"/></td>
+            </tr>
+        </table>
+    </form>
 </div>
