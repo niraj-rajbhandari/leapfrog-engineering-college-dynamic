@@ -14,6 +14,7 @@
         <th>Title</th>
         <th>Type</th>
         <th>Image</th>
+        <th>Published</th>
         <th>Action</th>
         </thead>
         <?php foreach ($posts_info as $value): ?>
@@ -24,10 +25,16 @@
                 <?php echo $value['post_type'];?>
             </td>
             <td><img class="img-rounded img-polaroid" src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['post_image']; ?>" width="100px" height="100px"/></td>
+             <td>
+                <?php $active=($value['active']==1)?'Yes':'No';?>
+                <?php echo $active;?>
+                
+            </td>
             <td>
                 <a href="<?php echo BASE_URL; ?>admin/content-management/edit-post/post-id/<?php echo $value['id']; ?>" class="btn  btn-primary">Edit Post</a> | 
                 <a href="<?php echo BASE_URL; ?>admin/content-management/delete-post/post-id/<?php echo $value['id']; ?>" class="btn  btn-danger">Delete Post</a>  
             </td>
+           
             </tbody>
         <?php endforeach; ?>
     </table>

@@ -25,7 +25,7 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
         $UserId = $auth->getIdentity()->id;
         if ($this->getRequest()->isPost()) {
             $adapter = new Zend_File_Transfer_Adapter_Http();
-            $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
+            $adapter->setDestination(BASE_PATH. 'img/uploads')
                     ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico')
                     ->addValidator('Size', FALSE, 512000)
                     ->addValidator('Count', false, 1);
@@ -86,7 +86,7 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
 
         if ($this->getRequest()->isPost()) {
             $adapter = new Zend_File_Transfer_Adapter_Http();
-            $adapter->setDestination($_SERVER['DOCUMENT_ROOT'] . '/img/uploads')
+            $adapter->setDestination(BASE_PATH. 'img/uploads')
                     ->addValidator('Extension', false, 'jpg,jpeg,png,gif,bmp,ico')
                     ->addValidator('Size', FALSE, 512000)
                     ->addValidator('Count', false, 1);
@@ -112,6 +112,7 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
                 'post_title' => array('NotEmpty'),
                 'post_body' => array('NotEmpty')
             );
+            
 
             //assign Input
             $input = new Zend_Filter_Input($filters, $validators);
@@ -173,6 +174,9 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
 
     public function postListAction() {
         // action body
+        //pagination
+        
+        //------------------------------------------
         $postList = $this->postModel->ListPost();
         $this->view->postList = $postList;
     }
