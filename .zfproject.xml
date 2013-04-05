@@ -36,6 +36,7 @@
               <actionMethod actionName="editUser"/>
               <actionMethod actionName="userList"/>
               <actionMethod actionName="profile"/>
+              <actionMethod actionName="changePassword"/>
             </controllerFile>
             <controllerFile controllerName="Gallery">
               <actionMethod actionName="index"/>
@@ -108,6 +109,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="ContentManagement">
                 <viewScriptFile forActionName="updatePublishPost"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="User">
+                <viewScriptFile forActionName="changePassword"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

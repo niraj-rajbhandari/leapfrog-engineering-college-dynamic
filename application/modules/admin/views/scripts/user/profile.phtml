@@ -1,60 +1,45 @@
-<head>
-    <title>User Profile</title>
+<?php $data = $this->Userprofile; ?>
+<title>User Profile</title>
 
-    <script type="text/javascript" src="<?php echo BASE_URL; ?>js/jquery.prettyPhoto.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $("area[rel^='prettyPhoto']").prettyPhoto();
-            $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
-                animation_speed: 'normal',
-                theme: 'light_square',
-                slideshow: 3000,
-                autoplay_slideshow: false
-            });
-        });
-    </script>
-</head>
-<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/prettyPhoto.css"/>
 <div id="user-info">
-    <h3> Personal Information <a href="change_password.php">Change Password</a></h3>
+    <h3> Personal Information 
+        <a href="<?Php echo BASE_URL; ?>admin/user/change-password">Change Password</a>
+        <a href="<?Php echo BASE_URL; ?>admin/user/edit-user">Edit User</a></h3>
     <hr>
     <div class="profile-pic gallery left-pull">
-        <ul class="thumbnails">
-            <li class="span2">
-                <a href="<?php echo BASE_URL; ?>img/uploads/<?php echo $data['image_name']; ?>" rel="prettyPhoto[gallery]" title="" class="thumbnail">
-                    <img src="<?php echo BASE_URL; ?>img/uploads/thumbs/<?php echo $thumb_name ?>" alt="Avatar" />
-                </a>
-            </li>
-        </ul>
-    </div>
-    <table cellpadding='5px' cellspacing='5px' id='profile-table' >
-
-
-        <?php $data = $this->Userprofile; ?>
         
-        <tr>
-            <td><b>First Name:</b></td>
-            <td><?php echo $data['first_name']; ?></td>
-        </tr>
-        <?php if (!empty($data['middle_name'])): ?>
+                <img src="<?php echo BASE_URL; ?>/img/uploads/<?php echo $data['image_name']; ?>" width="200px" height="200px"/>
+            
+    </div>
+    <div class="pull-left">
+        <table cellpadding='5px' cellspacing='5px' id='profile-table' >
+
+
+
+
             <tr>
-                <td><b>Middle Name:</b></td>
-                <td><?php echo $data['middle_name']; ?></td>
-            </tr><?php endif; ?>
-        <tr>
-            <td><b>Last Name:</b></td>
-            <td><?php echo $data['last_name']; ?></td>
-        </tr>
-        <tr>
-            <td><b>Address:</b></td>
-            <td><?php echo $data['address']; ?></td>
-        </tr>
-        <tr>
-            <td><b>Email:</b></td>
-            <td><?php echo $data['email']; ?></td>
-        </tr>
-    </table>
+                <td><b>First Name:</b></td>
+                <td><?php echo $data['first_name']; ?></td>
+            </tr>
+            <?php if (!empty($data['middle_name'])): ?>
+                <tr>
+                    <td><b>Middle Name:</b></td>
+                    <td><?php echo $data['middle_name']; ?></td>
+                </tr><?php endif; ?>
+            <tr>
+                <td><b>Last Name:</b></td>
+                <td><?php echo $data['last_name']; ?></td>
+            </tr>
+            <tr>
+                <td><b>Address:</b></td>
+                <td><?php echo $data['address']; ?></td>
+            </tr>
+            <tr>
+                <td><b>Email:</b></td>
+                <td><?php echo $data['email']; ?></td>
+            </tr>
+        </table>
+
+    </div>
 
 </div>
