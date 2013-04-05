@@ -36,10 +36,13 @@
               <actionMethod actionName="editUser"/>
               <actionMethod actionName="userList"/>
               <actionMethod actionName="profile"/>
+              <actionMethod actionName="changePassword"/>
             </controllerFile>
             <controllerFile controllerName="Gallery">
               <actionMethod actionName="index"/>
               <actionMethod actionName="listPhotos"/>
+              <actionMethod actionName="editPhotos"/>
+              <actionMethod actionName="deletePhotos"/>
             </controllerFile>
             <controllerFile controllerName="ContentManagement">
               <actionMethod actionName="index"/>
@@ -110,8 +113,14 @@
               <viewControllerScriptsDirectory forControllerName="ContentManagement">
                 <viewScriptFile forActionName="updatePublishPost"/>
               </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="User">
+                <viewScriptFile forActionName="changePassword"/>
+              </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Gallery">
-                <viewScriptFile forActionName="listPhotos"/>
+                <viewScriptFile forActionName="editPhotos"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Gallery">
+                <viewScriptFile forActionName="deletePhotos"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

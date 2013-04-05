@@ -54,6 +54,8 @@ class Admin_GalleryController extends Zend_Controller_Action
            }   
            
        
+    
+    
     }
     }
     public function editAlbumAction()
@@ -111,8 +113,22 @@ class Admin_GalleryController extends Zend_Controller_Action
         // action body
     }
 
+    public function editPhotosAction()
+    {
+        // action body
+    }
+
+    public function deletePhotosAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
 
 
 
