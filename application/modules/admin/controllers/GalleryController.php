@@ -3,9 +3,12 @@
 class Admin_GalleryController extends Zend_Controller_Action
 {
 
-    private $albumModel;
-    private $galleryModel;
-    public function init() {
+    private $albumModel = null;
+
+    private $galleryModel = null;
+
+    public function init()
+    {
         /* Initialize action controller here */
         $this->_layout = Zend_Layout::getMvcInstance();
         $this->_layout->setLayout('admin');
@@ -50,9 +53,9 @@ class Admin_GalleryController extends Zend_Controller_Action
                
            }   
            
-       }
+       
     }
-
+    }
     public function editAlbumAction()
     {
         $albumId = $this->_getParam('album-id');
@@ -103,8 +106,15 @@ class Admin_GalleryController extends Zend_Controller_Action
            }    
     }
 
+    public function listPhotosAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 
