@@ -10,13 +10,15 @@ class Admin_Model_Post extends Zend_Db_Table_Abstract {
     }
     
     public function EditPost($postId,$postInfo) {
-        $where=array('id'=>$postId);
+        $where = $this->getAdapter()->quoteInto('id = ?', $postId);
+        
         $bool = $this->update($postInfo,$where);
         return $bool;
     }
     
     public function DeletePost($postId){
-        $where=array('id'=>$postId);
+        $where = $this->getAdapter()->quoteInto('id = ?', $postId);
+        
         $bool=$this->delete($where);
         return $bool;
     }
@@ -29,7 +31,8 @@ class Admin_Model_Post extends Zend_Db_Table_Abstract {
     
     public function GetPostById($postId)
     {
-        $where=array('id'=>$postId);
+        $where = $this->getAdapter()->quoteInto('id = ?', $postId);
+        
         $postInfo=$this->fetchRow($where)->toArray();
         return $postInfo;
     }

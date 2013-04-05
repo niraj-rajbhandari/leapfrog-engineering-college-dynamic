@@ -46,6 +46,7 @@
               <actionMethod actionName="editPost"/>
               <actionMethod actionName="deletePost"/>
               <actionMethod actionName="postList"/>
+              <actionMethod actionName="updatePublishPost"/>
             </controllerFile>
           </controllersDirectory>
           <formsDirectory>
@@ -104,6 +105,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="User">
                 <viewScriptFile forActionName="profile"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="ContentManagement">
+                <viewScriptFile forActionName="updatePublishPost"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

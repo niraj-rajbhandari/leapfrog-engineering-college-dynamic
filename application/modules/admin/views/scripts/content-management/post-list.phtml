@@ -1,4 +1,34 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>ContentManagement</b> and script/action name <b>postList</b></p>
+<?php $posts_info = $this->postList;
+?>
+<div class="container">
+    <h4>
+        Posts
+        <a href='<?php echo BASE_URL; ?>admin/content-management/add-post' class='btn btn-info btn-small'>Add Posts</a>
+        <div id="delete-msg" class="pull-right alert-info"></div>
+    </h4>
+    <hr>
+
+    <table class="table  table-bordered table-striped table-post row-fluid">
+        <thead>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Image</th>
+        <th>Action</th>
+        </thead>
+        <?php foreach ($posts_info as $value): ?>
+            <tbody>
+            <td ><?php echo $value['id'] ?></td>
+            <td><?php echo $value['post_title'] ?></td>
+            <td>
+                <?php echo $value['post_type'];?>
+            </td>
+            <td><img class="img-rounded img-polaroid" src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['post_image']; ?>" width="100px" height="100px"/></td>
+            <td>
+                <a href="<?php echo BASE_URL; ?>admin/content-management/edit-post/post-id/<?php echo $value['id']; ?>" class="btn  btn-primary">Edit Post</a> | 
+                <a href="<?php echo BASE_URL; ?>admin/content-management/delete-post/post-id/<?php echo $value['id']; ?>" class="btn  btn-danger">Delete Post</a>  
+            </td>
+            </tbody>
+        <?php endforeach; ?>
+    </table>
 </div>

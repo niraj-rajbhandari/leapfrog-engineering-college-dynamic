@@ -12,10 +12,22 @@
 
                 </tr>
                 <tr>
+                    <td class="span2">Type:</td>
+                    <td class="span8">
+                        <select name="post_type">
+                            <option value="post">Post</option>
+                            <option value="news">News & Events</option>
+                            <option value="facilites">Facilities</option>
+                            
+                        </select> 
+                    </td>
+
+                </tr>
+                <tr>
                     <td class="span2">Image:</td>
                     <td class="span8">
                         <input type="file" name="post_image"/>
-                        <input type="hidden" name="max_file_size" value="10240"/>
+
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +46,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" name="submit" class="btn btn-inverse"/></td>
+                    <td><input type="submit" value="Add Post" name="submit" class="btn btn-inverse"/></td>
                 </tr>
             </form>    
         </table>
