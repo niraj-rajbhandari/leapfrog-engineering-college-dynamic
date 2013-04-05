@@ -6,8 +6,10 @@ class Admin_Model_TblUser extends Zend_Db_Table_Abstract
     
     public function AddUser($userInfo)
     {
-        
-        $this->insert($userInfo);
+       if($this->insert($userInfo))
+           return true;
+       else 
+           return flase;
     }
 
     public function EditUser($UserId,$UserInfo)
@@ -23,7 +25,7 @@ class Admin_Model_TblUser extends Zend_Db_Table_Abstract
     }
     Public function DeleteUser($UserId)
     {
-        $where=$where=array('id'=>$UserId);
+       $where=array('id'=>$UserId);
         $this->delete($where);
     }
     

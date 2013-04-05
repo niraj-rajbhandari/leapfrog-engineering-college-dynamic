@@ -19,7 +19,23 @@ class Admin_UserController extends Zend_Controller_Action {
     public function addUserAction() {
         // action body
         $addForm = new Admin_Form_AddUserForm();
+        $objData = new Admin_Model_TblUser();
         $this->view->addForm = $addForm;
+
+        if ($this->getRequest()->isPost()) {
+            if ($addForm->isValid($this->getRequest()->getPost())) {
+                $userInfo = $addForm->getValues();
+
+                $request = $objData->AddUser($userInfo);
+
+                if ($request) {
+                    $this->_helper->flashMessenger->addMessage('sucessfully inserted');
+                    $this->view->message = $this->_helper->flashMessenger->getMessages();
+                } else {
+                    echo 'you have done mistake!!';
+                }
+            }
+        }
     }
 
     public function editUserAction() {
@@ -60,9 +76,10 @@ class Admin_UserController extends Zend_Controller_Action {
         $userId = $auth->getIdentity()->id;
         $userModel = new Admin_Model_TblUser();
         $userProfile = $userModel->GetUserById($userId);
-        echo '<pre>';
-        print_r($userProfile);
-        exit();
+//        echo '<pre>';
+//        print_r($userProfile);
+//        exit();
+        $this->view->Userprofile = $userProfile;
     }
 
 }
