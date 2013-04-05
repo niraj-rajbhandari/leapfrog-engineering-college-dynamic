@@ -1,4 +1,28 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Gallery</b> and script/action name <b>editAlbum</b></p>
+<?php $albumData=$this->albumValues;?>
+
+<h4>Edit album</h4>
+<hr>
+<?php if (isset($this->messages)) {
+    ?>
+
+    <div id="flashmessenger" class="alert alert-success">
+        <? echo ($this->messages[0]); ?>
+    </div>
+
+    <?php
+}
+?>
+<div>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td>Album Name:</td>
+                <td><input type="text" name="album_name" value="<?php echo $albumData['album_name'];?>"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Update"class="btn  btn-primary"/></td>
+            </tr>
+        </table>
+    </form>
 </div>
