@@ -1,4 +1,51 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Gallery</b> and script/action name <b>index</b></p>
+<h4>Albums</h4>
+<hr>
+<a href='<?php echo BASE_URL; ?>admin/gallery/add-album/' class="btn  btn-primary">Add Album</a>
+<div id="view-content" style="margin: 50px 0px 100px 200px;">
+    <table cellpadding="50">
+        <tr>
+            <th>
+                s.no
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                created Date
+            </th>
+        </tr>
+    <?php
+        $albumlist = $this->albumlist;
+        $checkval=false;
+        $counter=1;
+        if(count($albumlist)>0)
+        {
+            foreach ($albumlist as  $value) {
+                if($checkval)
+                {
+                    echo '</tr>';
+                    echo '<tr>';
+                    
+                }?>
+            <td>
+                <?php echo $counter;?>
+            </td>
+            <td>
+                <?php echo $value['album_name'];?>
+            </td>
+            <td>
+                <?php echo $value['created_date'];?>
+            </td>
+            <td>
+                <a href="<?php echo BASE_URL; ?>admin/gallery/edit-album/album-id/<?php echo $value['id']; ?>" class="btn  btn-primary">Edit Album</a> | 
+                <a href="<?php echo BASE_URL; ?>admin/gallery/delete-album/album-id/<?php echo $value['id']; ?>" class="btn  btn-danger">Delete Album</a> |
+                <a href="<?php echo BASE_URL; ?>admin/gallery/delete-album/list-photos/<?php echo $value['id']; ?>" class="btn  btn-danger">List photos</a>
+            </td>
+            <?php
+            $checkval=true;
+            $counter ++;
+            }
+        } 
+    ?>
+    </table>
 </div>

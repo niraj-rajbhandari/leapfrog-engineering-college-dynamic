@@ -12,14 +12,9 @@ class Admin_Model_TblUser extends Zend_Db_Table_Abstract
 
     public function EditUser($UserId,$UserInfo)
     {
-        $where=array('id'=>$UserId);
+        $where=  $this->getAdapter()->quoteInto('id = ?', $UserId);
         $update=$this->update($UserInfo, $where);
-        if($update){
-            return true;
-        }
-        else{
-            return FALSE;
-        }
+        return $update;
     }
     Public function DeleteUser($UserId)
     {
@@ -29,8 +24,10 @@ class Admin_Model_TblUser extends Zend_Db_Table_Abstract
     
     public function GetUserById($userId)
     {
-        $where=array('id'=>$userId);
+        
+        $where=  $this->getAdapter()->quoteInto('id = ?', $userId);
         $userInfo=$this->fetchRow($where)->toArray();
+        
         return $userInfo;
     }
     
@@ -40,7 +37,20 @@ class Admin_Model_TblUser extends Zend_Db_Table_Abstract
         
         return $userList;
     }
-    
+    public function ChangePassword($userId, $password)
+    {
+            $where=  $this->getAdapter()->quoteInto('id = ?', $userId);
+            $bool=$this->update(array('password'=>$password), $where);
+            return $bool;
+    }
+    public function CheckPassword($userId, $password){
+          $where="id=$userId and password='$password'";
+          
+          $data=$this->fetchAll($where)->toArray();
+          $count=count($data) ;
+          return $count;
+        
+    }
 
 }
 

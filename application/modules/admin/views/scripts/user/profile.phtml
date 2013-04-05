@@ -1,4 +1,45 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>User</b> and script/action name <b>profile</b></p>
+<?php $data = $this->Userprofile; ?>
+<title>User Profile</title>
+
+<div id="user-info">
+    <h3> Personal Information 
+        <a href="<?Php echo BASE_URL; ?>admin/user/change-password">Change Password</a>
+        <a href="<?Php echo BASE_URL; ?>admin/user/edit-user">Edit User</a></h3>
+    <hr>
+    <div class="profile-pic gallery left-pull">
+        
+                <img src="<?php echo BASE_URL; ?>/img/uploads/<?php echo $data['image_name']; ?>" width="200px" height="200px"/>
+            
+    </div>
+    <div class="pull-left">
+        <table cellpadding='5px' cellspacing='5px' id='profile-table' >
+
+
+
+
+            <tr>
+                <td><b>First Name:</b></td>
+                <td><?php echo $data['first_name']; ?></td>
+            </tr>
+            <?php if (!empty($data['middle_name'])): ?>
+                <tr>
+                    <td><b>Middle Name:</b></td>
+                    <td><?php echo $data['middle_name']; ?></td>
+                </tr><?php endif; ?>
+            <tr>
+                <td><b>Last Name:</b></td>
+                <td><?php echo $data['last_name']; ?></td>
+            </tr>
+            <tr>
+                <td><b>Address:</b></td>
+                <td><?php echo $data['address']; ?></td>
+            </tr>
+            <tr>
+                <td><b>Email:</b></td>
+                <td><?php echo $data['email']; ?></td>
+            </tr>
+        </table>
+
+    </div>
+
 </div>

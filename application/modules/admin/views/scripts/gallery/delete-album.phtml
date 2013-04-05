@@ -1,4 +1,10 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Gallery</b> and script/action name <b>deleteAlbum</b></p>
-</div>
+<?php if (isset($this->messages)) {
+    ?>
+
+    <div id="flashmessenger" class="alert alert-success">
+        <? echo ($this->messages[0]); ?>
+    </div>
+
+    <?php
+}
+?>

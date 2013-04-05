@@ -1,7 +1,63 @@
+<?php $data = $this->editInfo;
+?>
 <h4>Edit User Info</h4>
-    <hr>
-<div class="table-form box-border">
-    
-    <?php echo $this->editForm;?>
+<hr>
+<div class="row-fluid">
+
+
+    <div class="table container-fluid">
+
+        <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL; ?>admin/user/edit-user">
+            <table>
+                <tr>
+                    <td class="span4">First Name:</td>
+                    <td class="span8"><input type="text" name="first_name" required value="<?php echo $data['first_name']; ?>"/></td>
+                </tr>
+                <?php //if($data['middle_name']!=0): ?>
+                <tr>
+                    <td class="span4">Middle Name:</td>
+                    <td class="span8"><input type="text" name="middle_name" value="<?php echo $data['middle_name']; ?>"/></td>
+                </tr>
+                <?php //endif; ?>
+                <tr>
+                    <td class="span4">Last Name:</td>
+                    <td class="span8"><input type="text" name="last_name" required value="<?php echo $data['last_name']; ?>"/></td>
+                </tr>
+                <tr>
+                    <td class="span4">Address:</td>
+                    <td class="span8"><input type="text" name="address" required value="<?php echo $data['address']; ?>"/></td>
+                </tr>
+                 <tr>
+                    <td class="span4">Phone:</td>
+                    <td class="span8"><input type="text" name="phone" required value="<?php echo $data['phone']; ?>"/></td>
+                </tr>
+                <tr>
+                    <td class="span4">Email:</td>
+                    <td class="span8"><input type="text" name="email" required value="<?php echo $data['email']; ?>"/></td>
+                </tr>
+                <tr>
+                    <td class="span4">Avatar:</td>
+                    <td class="span8">
+                        <input type="file" name="file"/>
+                        <img src="<?php echo BASE_URL;?>/img/uploads/<?php echo $data['image_name'];?>" width="100px" height="100px"
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="span4"></td>
+                    <td class="span8"><input type="submit" name="submit" value="Edit"/></td>
+                </tr>
+
+
+            </table> 
+            
+        </form>
+
+    </div>
 
 </div>
+
+
+
+
+
