@@ -1,0 +1,29 @@
+<?php 
+    $imageList=$this->imageList;
+    $i=0;
+?>
+
+<div id="container">
+    <ul class="thumbnails explanation">
+        <?php if (count($imageList) > 0): ?>
+            <?php
+            foreach ($imageList as $value) {
+                if ($i > 1) {
+                    echo'</ul>';
+                    echo '<ul class="thumbnails explanation">';
+                    $i = 0;
+                }
+                ?>
+                <li class="span5 " >
+                    <a href="#" class="thumbnail">
+                        <img src="<?php echo $this->baseUrl('/img/uploads/' . $value['name']); ?>" />
+                    </a>
+                </li>
+
+                <?php
+                $i++;
+            }
+            ?>
+<?php  endif; ?>
+    </ul>
+</div>

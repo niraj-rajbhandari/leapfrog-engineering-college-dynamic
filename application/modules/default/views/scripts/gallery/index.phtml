@@ -1,1 +1,43 @@
-<title>Gallery</title>
+<?php
+$albumlist=$this->album_list;
+$albums = $this->album;
+$images=$this->images;
+$i=0;
+//echo '<pre>';
+//print_r($albums);
+//exit;
+?>
+
+<div id="container">
+    <ul class="thumbnails explanation">
+        <?php if (count($albums) > 0): ?>
+            <?php
+           foreach ($albumlist as $value) {
+               if ($i > 3) {
+                        echo'</ul>';
+                        echo '<ul class="thumbnails">';
+                        $i = 0;
+                    }
+                    ?>
+                <li class="span6 " >
+                    <div class="thumbnail">
+                    <a href="<?php echo BASE_URL; ?>default/gallery/listimages/album-id/<?php echo $value['id']; ?>" class="thumbnail">
+                        <img src="<?php echo BASE_URL.'/img/uploads/' . $images[$i][0]['name']; ?>" />
+                        
+                    </a>
+                        <div class="caption">
+                            <h5> <p><?php echo $value['album_name'];?></p></h5>
+                        </div>
+                    </div>
+                </li>
+
+                <?php
+                $i++;
+            }
+            ?>
+<?php  endif; ?>
+    </ul>
+    
+    
+</div>
+
