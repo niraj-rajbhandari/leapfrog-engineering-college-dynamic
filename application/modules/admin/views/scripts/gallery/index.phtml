@@ -1,18 +1,21 @@
 <h4>Albums</h4>
 <hr>
-<a href='<?php echo BASE_URL; ?>admin/gallery/add-album/' class="btn  btn-primary">Add Album</a>
-<div id="view-content" style="margin: 50px 0px 100px 200px;">
-    <table cellpadding="50">
-        <tr>
-            <th>
+
+<div id="view-content" style="margin: 50px 100px 0px 100px;">
+    <table class="table table-striped table-bordered">
+        <tr class="success">
+            <td>
                 s.no
-            </th>
-            <th>
+            </td>
+            <td>
                 name
-            </th>
-            <th>
-                created Date
-            </th>
+            </td>
+            <td>
+                Published
+            </td>
+            <td>
+                <a href='<?php echo BASE_URL; ?>admin/gallery/add-album/' class="btn  btn-inverse">Add Album</a>
+            </td>
         </tr>
     <?php
         $albumlist = $this->albumlist;
@@ -34,12 +37,12 @@
                 <?php echo $value['album_name'];?>
             </td>
             <td>
-                <?php echo $value['created_date'];?>
+                <?php echo 'yes';?>
             </td>
             <td>
                 <a href="<?php echo BASE_URL; ?>admin/gallery/edit-album/album-id/<?php echo $value['id']; ?>" class="btn  btn-primary">Edit Album</a> | 
                 <a href="<?php echo BASE_URL; ?>admin/gallery/delete-album/album-id/<?php echo $value['id']; ?>" class="btn  btn-danger">Delete Album</a> |
-                <a href="<?php echo BASE_URL; ?>admin/gallery/delete-album/list-photos/<?php echo $value['id']; ?>" class="btn  btn-danger">List photos</a>
+                <a href="<?php echo BASE_URL; ?>admin/gallery/list-photos/album-id/<?php echo $value['id']; ?>" class="btn ">List photos</a>
             </td>
             <?php
             $checkval=true;
@@ -47,5 +50,7 @@
             }
         } 
     ?>
+            
     </table>
+    
 </div>

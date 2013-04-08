@@ -1,4 +1,82 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Gallery</b> and script/action name <b>listPhotos</b></p>
+<?php
+$result = $this->imageList;
+$i = 0;
+if (isset($this->messages)) {
+    ?>
+
+    <div id="flashmessenger" class="alert alert-success">
+        <? echo ($this->messages[0]); ?>
+    </div>
+
+    <?php
+}
+//sleep(3);
+//$this->_redirect(BASE_URL . 'admin/gallery');
+?>
+<div class='container'>
+    <form method="post"  enctype="multipart/form-data">
+        <table class='table'>
+            <tr>
+                <td>Add image:</td>
+                <td>
+                    <input type="file" name="post_image"/>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Caption:</td>
+                <td>
+                    <input type="text" name="photo_caption"/> <br/> 
+                    <input type="submit" name="submit" value="Add" class="btn  btn-primary"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+
+
+    <div id='image_list'>
+
+        <ul class="thumbnails">
+            <?php if (count($result) > 0): ?>
+                <?php
+                foreach ($result as $value) {
+                    if ($i > 3) {
+                        echo'</ul>';
+                        echo '<ul class="thumbnails">';
+                        $i = 0;
+                    }
+                    ?>
+            
+                
+            
+                    <li class="span3">
+                        <div class="thumbnail">
+                             
+                            <img src="<?php echo $this->baseUrl('/img/uploads/' . $value['name']); ?>" />
+                            <div class="caption">
+                                
+                                <font id="edit-section-<?php echo $value['id']?>" class="edit-section">
+                                    <h5> <p><?php echo $value['image_caption']; ?></p></h5>
+                                    <label class="checkbox">
+                                        <input type="checkbox"   <?php if ($value['post']=='1'){echo 'checked="true"';}else{echo '';}?> disabled> Posted
+                                    </label>
+                                    <a class="btn btn-primary" class="edit" href="<?php echo BASE_URL; ?>admin/gallery/edit-photos/id/<?php echo $value['id']; ?>">Edit</a>
+                                    <a class="btn btn-danger" class="delete-button" href="<?php echo BASE_URL; ?>admin/gallery/delete-photos/id/<?php echo $value['id']; ?>">Delete</a>
+                                    
+                                </font>
+                                
+                            </div>
+
+                        </div>
+                    </li>
+                    <?php
+                    $i++;
+                }
+                ?>
+            <?php endif; ?>
+        </ul>
+    </div>
 </div>
+
