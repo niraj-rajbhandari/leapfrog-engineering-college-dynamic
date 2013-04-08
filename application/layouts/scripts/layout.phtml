@@ -1,8 +1,6 @@
-<?php  
-
-$uri= $_SERVER['REQUEST_URI'];
-$pages=  explode('/', $uri);
-
+<?php
+$uri = $_SERVER['REQUEST_URI'];
+$pages = explode('/', $uri);
 ?>
 <html>
     <head>
@@ -28,30 +26,30 @@ $pages=  explode('/', $uri);
                     <a href="<?php echo BASE_URL; ?>">Home</a>
                 </li>
                 <li>
-                    <a href="<?php echo BASE_URL; ?>about-us" class="<?php echo ($pages[1]=='about-us')?'active':''?>">About Us</a>
+                    <a href="<?php echo BASE_URL; ?>about-us" class="<?php echo ($pages[1] == 'about-us') ? 'active' : '' ?>">About Us</a>
                 </li>
 
 
                 <li>
-                    <a href="<?php echo BASE_URL; ?>facilities" class="<?php echo ($pages[1]=='facilities')?'active':''?>">Facilities</a>
+                    <a href="<?php echo BASE_URL; ?>facilities" class="<?php echo ($pages[1] == 'facilities') ? 'active' : '' ?>">Facilities</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo BASE_URL; ?>academic" class="<?php echo ($pages[1]=='academic')?'active':''?>">Academic</a>
+                    <a href="<?php echo BASE_URL; ?>academic" class="<?php echo ($pages[1] == 'academic') ? 'active' : '' ?>">Academic</a>
                 </li>
                 <li>
-                    <a href="<?php echo BASE_URL; ?>gallery" class="<?php echo ($pages[1]=='gallery')?'active':''?>">Gallery</a>
+                    <a href="<?php echo BASE_URL; ?>gallery" class="<?php echo ($pages[1] == 'gallery') ? 'active' : '' ?>">Gallery</a>
                 </li>
                 <li>
-                    <a href="<?php echo BASE_URL; ?>news" class="<?php echo ($pages[1]=='news')?'active':''?>">News & Events</a>
+                    <a href="<?php echo BASE_URL; ?>news" class="<?php echo ($pages[1] == 'news') ? 'active' : '' ?>">News & Events</a>
                 </li>
                 <li>
-                    <a href="<?php echo BASE_URL; ?>contact" class="<?php echo ($pages[1]=='contact')?'active':''?>">Contact</a>
+                    <a href="<?php echo BASE_URL; ?>contact" class="<?php echo ($pages[1] == 'contact') ? 'active' : '' ?>">Contact</a>
                 </li>
 
             </ul>
 
-        </div>
+        </div> 
         <?php echo $this->layout()->content;?>
         
           <!-- footer -->

@@ -19,11 +19,9 @@ class Admin_GalleryController extends Zend_Controller_Action {
 
     public function indexAction() {
         // action body
-        $albumList = $this->albumModel->listAlbum();
-        $this->view->albumlist = $albumList;
-//        echo '<pre>';
-//        print_r($albumList);
-//        exit;
+        $albumList=  $this->albumModel->listAlbum();
+        $this->view->albumlist=$albumList;
+
     }
 
     public function addAlbumAction() {

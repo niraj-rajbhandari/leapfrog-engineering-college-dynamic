@@ -7,13 +7,13 @@ class Default_GalleryController extends Zend_Controller_Action
 
     private $galleryModel = null;
 
-    private $postModel = null;
+    
 
     public function init()
     {
         $this->albumModel = new Default_Model_Album();
         $this->galleryModel = new Default_Model_Gallery();
-        $this->postModel=new Default_Model_Posts();
+        
     }
 
     public function indexAction()
