@@ -1,6 +1,6 @@
 <?php
 $imageList = $this->imageList;
-$countImage = count($imageList);
+
 $i = 0;
 $news = $this->newsSidebar;
 $academic = $this->academicSidebar;
@@ -32,9 +32,9 @@ $contact = $this->contact;
                         ?>
                         <li class="span5 " >
 
-                            <a href="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['name']; ?>" rel="prettyPhoto[gallery<?php echo $value['album_id']; ?>]" title="<?php echo $value['image_caption']; ?>" class="thumbnail">
-                                <img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['name']; ?>"  alt="<?php echo $value['title']; ?>" class="img-rounded" />
-                            </a>
+                            <a href="#" class="thumbnail"><img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['name']; ?>"  alt="<?php echo $value['title']; ?>" class="img-rounded" /></a>
+                                
+                            
                         </li>
 
                         <?php

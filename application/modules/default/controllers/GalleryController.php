@@ -27,10 +27,12 @@ class Default_GalleryController extends Zend_Controller_Action
         $album_list=  $this->albumModel->listAlbum();
         $newsSidebar=$this->post->getSidebar('news');
         $academicSidebar=$this->post->getSidebar('academic');
+        $contact=$this->post->getSidebar('contact');
         
         $this->view->newsSidebar=$newsSidebar;
         $this->view->academicSidebar=$academicSidebar;
         $this->view->album_list=$album_list;
+        $this->view->contact=$contact;
        foreach ($album_list as $value) {
             $ids[$i]=$value['id'];
             $images[$i]=  $this->galleryModel->listImage($ids[$i]);
@@ -49,11 +51,13 @@ class Default_GalleryController extends Zend_Controller_Action
         $photoList = $this->galleryModel->listImage($album_id);
         $newsSidebar=$this->post->getSidebar('news');
         $academicSidebar=$this->post->getSidebar('academic');
+        $contact=$this->post->getSidebar('contact');
         $album=$this->albumModel->getAlbumById($album_id);
         
         $this->view->imageList = $photoList;
         $this->view->newsSidebar=$newsSidebar;
         $this->view->academicSidebar=$academicSidebar;
+        $this->view->contact=$contact;
         $this->view->album=$album;
     }
 
