@@ -18,26 +18,28 @@ $contact = $this->contact;
                 <?php if (count($albums) > 0): ?>
                     <?php
                     foreach ($albumlist as $value) {
-                        if ($i > 3) {
-                            echo'</ul>';
-                            echo '<ul class="thumbnails">';
-                            $i = 0;
-                        }
-                        ?>
-                        <li class="span6 " >
-                            <div class="thumbnail">
-                                <a href="<?php echo BASE_URL; ?>gallery/listimages/album-id/<?php echo $value['id']; ?>" class="thumbnail">
-                                    <img src="<?php echo BASE_URL . '/img/uploads/' . $images[$i][0]['name']; ?>" />
+                        if ($value['album_name'] != "Slider") {
+                            if ($i > 3) {
+                                echo'</ul>';
+                                echo '<ul class="thumbnails">';
+                                $i = 0;
+                            }
+                            ?>
+                            <li class="span6 " >
+                                <div class="thumbnail">
+                                    <a href="<?php echo BASE_URL; ?>gallery/listimages/album-id/<?php echo $value['id']; ?>" class="thumbnail">
+                                        <img src="<?php echo BASE_URL . '/img/uploads/' . $images[$i][0]['name']; ?>" />
 
-                                </a>
-                                <div class="caption">
-                                    <h5> <p><?php echo $value['album_name']; ?></p></h5>
+                                    </a>
+                                    <div class="caption">
+                                        <h5> <p><?php echo $value['album_name']; ?></p></h5>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
 
-                        <?php
-                        $i++;
+                            <?php
+                            $i++;
+                        }
                     }
                     ?>
                 <?php endif; ?>
