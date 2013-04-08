@@ -17,20 +17,27 @@ $contact = $this->contact;
                 <?php
                 if (!empty($academic)):
                     foreach ($academic as $value):
+                        $var = explode(" ", $value['post_title']);
                         ?> 
                         <tr>
-                            <td><a href="" id="academic-<?php echo $value['id']; ?>" class="academic-content academic-class"><strong>-</strong> <?php echo $value['post_title']; ?></a></td>
+                            <td><a href="" id="academic-<?php echo $value['id']; ?>" class="<? echo strtolower($var[2]); ?>"><strong>-</strong> <?php echo $value['post_title']; ?></a></td>
                         </tr>
-                        <?php
-                    endforeach;
-                endif;
-                ?>
+        <?php
+    endforeach;
+endif;
+?>
 
             </table>
 
 
             <div class="content-area" id="b-info">
-
+<?php
+if (!empty($academic)):
+    foreach ($academic as $value):
+        echo $value['post_body'];
+    endforeach;
+endif;
+?>
             </div>
         </div>
         <div class='recent_news_event'>
@@ -45,25 +52,25 @@ $contact = $this->contact;
                         </div>
                         <div id="collapseOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
-                                <?php
-                                if (!empty($news)):
-                                    $count = count($news);
-                                    $i = 0;
-                                    foreach ($news as $value):
-                                        ?>
+<?php
+if (!empty($news)):
+    $count = count($news);
+    $i = 0;
+    foreach ($news as $value):
+        ?>
                                         <li>
                                             <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
-                                            <?php
-                                            if ($i + 1 === $count):
-                                                ?>
+                                        <?php
+                                        if ($i + 1 === $count):
+                                            ?>
                                                 <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
                                             <?php endif; ?>
                                         </li>
-                                        <?php
-                                        $i++;
-                                    endforeach;
-                                endif;
-                                ?>
+                                            <?php
+                                            $i++;
+                                        endforeach;
+                                    endif;
+                                    ?>
                             </div>
                         </div>
                     </div>
@@ -98,23 +105,23 @@ $contact = $this->contact;
                         </div>
                         <div id="collapseThree" class="accordion-body collapse">
                             <div class="accordion-inner">
-                                <?php
-                                if (!empty($facilities)):
-                                    $count = count($facilities);
-                                    $i = 0;
-                                    foreach ($facilities as $value):
-                                        ?>
+<?php
+if (!empty($facilities)):
+    $count = count($facilities);
+    $i = 0;
+    foreach ($facilities as $value):
+        ?>
                                         <li>
                                             <a href="<?php echo BASE_URL; ?>facilities/facility/id/<?php echo $value['id']; ?>" class=""><?php echo $value['post_title']; ?></a>
-                                            <?php if ($i + 1 === $count): ?>
+                                        <?php if ($i + 1 === $count): ?>
                                                 <a href='<?php echo BASE_URL; ?>facilities' class='more-info pull-right'>More &raquo;</a>
                                             <?php endif; ?>
                                         </li>
-                                        <?php
-                                        $i++;
-                                    endforeach;
-                                endif;
-                                ?>
+                                            <?php
+                                            $i++;
+                                        endforeach;
+                                    endif;
+                                    ?>
                             </div>
                         </div>
                     </div>
@@ -122,20 +129,20 @@ $contact = $this->contact;
 
                 </div>
                 <div>
-                    <?php
-                    if (!empty($contact)):
-                        foreach ($contact as $value):
-                            ?>
+<?php
+if (!empty($contact)):
+    foreach ($contact as $value):
+        ?>
                             <h5><?php echo $value['post_title']; ?></h5>
                             <hr>
                             <div id="contact-info">
-                                <?php echo $value['post_body']; ?>
+        <?php echo $value['post_body']; ?>
                             </div>
 
-                            <?php
-                        endforeach;
-                    endif;
-                    ?>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
 
 
                 </div>
@@ -146,25 +153,6 @@ $contact = $this->contact;
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.facilities-info img').addClass("img-polaroid img-rounded content-img");
-        init();
-        $('.academic-class').click(function() {
-            var id = $(this).attr('id');
-            var postId = id.substring(9);
-
-            $.ajax({
-                type: 'POST',
-                data:{postId:postId},
-                url: "<?php echo BASE_URL; ?>/academic/detail" ,
-                dataType: 'text',
-                cache: false,
-                success: function(data) {
-                    alert(data);
-                    return false;
-                }
-            });
-        });
-    });
+    $(init);
 
 </script>

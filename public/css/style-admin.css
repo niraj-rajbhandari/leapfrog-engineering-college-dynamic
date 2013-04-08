@@ -164,3 +164,6 @@ x    width:1288px;
     text-align: center;
     vertical-align: top;
 }
+#image_list .thumbnails .span3 .thumbnail img {
+    height: 200px;
+}

@@ -67,8 +67,45 @@ function loadInitial() {
 
 //for academic.html
 function init() {
-    $('.academic-content').click(function() {
-        $('#b-info').toggle();
-
-    });
+	$('.computer').click(function() {
+		$('#b-computer').css('display', 'block');
+		$('#b-elec').css('display', 'none');
+		$('#b-civil').css('display', 'none');
+		$('#b-arch').css('display', 'none');
+		$('#b-aero').css('display', 'none');
+		return false;
+	});
+	$('.electric').click(function() {
+		$('#b-elec').css('display', 'block');
+		$('#b-computer').css('display', 'none');
+		$('#b-civil').css('display', 'none');
+		$('#b-arch').css('display', 'none');
+		$('#b-aero').css('display', 'none');
+		return false;
+	});
+	$('.civil').click(function() {
+		$('#b-civil').css('display', 'block');
+		$('#b-elec').css('display', 'none');
+		$('#b-computer').css('display', 'none');
+		$('#b-arch').css('display', 'none');
+		$('#b-aero').css('display', 'none');
+		return false;
+	});
+	$('.arch').click(function() {
+		$('#b-arch').css('display', 'block');
+		$('#b-civil').css('display', 'none');
+		$('#b-elec').css('display', 'none');
+		$('#b-computer').css('display', 'none');
+		$('#b-aero').css('display', 'none');
+		return false;
+	});
+	$('.aero').click(function() {
+		$('#b-aero').css('display', 'block');
+		$('#b-civil').css('display', 'none');
+		$('#b-elec').css('display', 'none');
+		$('#b-computer').css('display', 'none');
+		$('#b-arch').css('display', 'none');
+		return false;
+	});
 }
+

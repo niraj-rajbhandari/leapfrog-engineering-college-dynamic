@@ -134,6 +134,7 @@ class Admin_GalleryController extends Zend_Controller_Action {
                 $photoInfo['album_id'] = $Alabum_id;
                 $photoInfo['image_caption'] = $value['photo_caption'];
                 $photoInfo['created_date'] = $date;
+                $photoInfo['post']='1';
                 $photoInfo['name'] = $files['post_image']['name'];
 //                echo '<pre>';
 //                print_r($photoInfo);
