@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2013 at 04:14 AM
+-- Generation Time: Apr 08, 2013 at 07:32 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -32,15 +32,15 @@ CREATE TABLE IF NOT EXISTS `tbl_album` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tbl_album`
 --
 
 INSERT INTO `tbl_album` (`id`, `album_name`, `created_date`, `updated_date`) VALUES
-(3, 'naresh maharaja', '2013-03-20 05:09:58', NULL),
-(5, 'niraj', '2013-03-28 10:10:10', NULL);
+(6, 'Tour', '0000-00-00 00:00:00', NULL),
+(7, 'Seminar', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -50,27 +50,30 @@ INSERT INTO `tbl_album` (`id`, `album_name`, `created_date`, `updated_date`) VAL
 
 CREATE TABLE IF NOT EXISTS `tbl_gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `image_caption` varchar(255) DEFAULT NULL,
   `album_id` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
-  `updated_date` datetime NOT NULL,
-  `thumb_name` varchar(255) DEFAULT NULL,
+  `post` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_gallery` (`album_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `tbl_gallery`
 --
 
-INSERT INTO `tbl_gallery` (`id`, `title`, `image_caption`, `album_id`, `created_date`, `updated_date`, `thumb_name`) VALUES
-(14, 'Desert.jpg', 'Desert', 3, '2013-03-24 04:40:24', '0000-00-00 00:00:00', 'Desert_thumb.jpg'),
-(15, 'Jellyfish.jpg', 'jelly Fish', 3, '2013-03-24 04:40:36', '0000-00-00 00:00:00', 'Jellyfish_thumb.jpg'),
-(16, 'Penguins.jpg', 'Penguins', 3, '2013-03-24 04:40:44', '0000-00-00 00:00:00', 'Penguins_thumb.jpg'),
-(17, 'Tulips.jpg', 'tulips', 3, '2013-03-24 04:40:56', '0000-00-00 00:00:00', 'Tulips_thumb.jpg'),
-(25, 'school_bus.jpeg', 'School Bus', 5, '2013-03-28 11:47:11', '0000-00-00 00:00:00', 'school_bus_thumb.jpeg'),
-(26, 'school_bus1.jpeg', 'school bus 1', 5, '2013-03-28 11:47:23', '0000-00-00 00:00:00', 'school_bus1_thumb.jpeg');
+INSERT INTO `tbl_gallery` (`id`, `name`, `image_caption`, `album_id`, `created_date`, `post`) VALUES
+(27, 'image1.jpg', 'Tour1', 6, '2013-04-08 07:08:40', 1),
+(28, 'image3.jpg', 'Seminar1', 7, '2013-04-08 07:20:01', 1),
+(29, 'image4.jpg', 'Seminar2', 7, '2013-04-08 07:20:26', 1),
+(30, 'image6.jpg', 'Seminar3', 7, '2013-04-08 07:20:49', 1),
+(31, 'image7.jpg', 'Seminar4', 7, '2013-04-08 07:21:03', 1),
+(32, 'image8.jpg', 'semjnar5', 7, '2013-04-08 07:21:23', 1),
+(33, 'image10.jpg', 'Seminar6', 7, '2013-04-08 07:22:08', 0),
+(34, 'image2.jpg', 'Tour2', 6, '2013-04-08 07:22:29', 1),
+(35, 'image5.jpg', 'Tour3', 6, '2013-04-08 07:22:40', 1),
+(36, 'image9.jpg', 'Tour4', 6, '2013-04-08 07:22:52', 1);
 
 -- --------------------------------------------------------
 
