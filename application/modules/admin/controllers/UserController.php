@@ -134,9 +134,7 @@ class Admin_UserController extends Zend_Controller_Action {
         $userId = $auth->getIdentity()->id;
         $userModel = new Admin_Model_TblUser();
         $userProfile = $userModel->GetUserById($userId);
-//        echo '<pre>';
-//        print_r($userProfile)
-//        exit();
+
         $this->view->Userprofile = $userProfile;
     }
 
@@ -162,8 +160,6 @@ class Admin_UserController extends Zend_Controller_Action {
             }
         }
 
-
-        //$this->view->ChangePassword = $userPassword;
     }
 
 }

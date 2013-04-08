@@ -3,9 +3,7 @@
 class Default_ContactController extends Zend_Controller_Action {
     private $contact;
     public function init() {
-        /* Initialize action controller here */
-//        $this->_layout = Zend_Layout::getMvcInstance();
-//        $this->_layout->setLayout('contact');
+
         $this->contact=new Default_Model_Post();
     }
 
@@ -22,8 +20,7 @@ class Default_ContactController extends Zend_Controller_Action {
 
     public function feedbackAction() {
         // action body
-        // set smtp mail transport server
-        //set filters and validators for Zend_Filter_Input
+
         if ($this->getRequest()->isPost()) {
 
             $filters = array(

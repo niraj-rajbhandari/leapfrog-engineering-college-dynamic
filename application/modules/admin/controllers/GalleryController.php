@@ -69,9 +69,6 @@ class Admin_GalleryController extends Zend_Controller_Action {
             }
 
 
-//           echo '<pre>';
-//           print_r($albumInfo);
-//           exit;
         
             $this->_redirect(BASE_URL . 'admin/gallery');
             }
@@ -89,16 +86,6 @@ class Admin_GalleryController extends Zend_Controller_Action {
         
         $check = $this->albumModel->deleteAlbum($albumId);
         
-//        if ($check == 1) {
-//            $this->_helper->flashMessenger->clearMessages();
-//            $this->_helper->flashMessenger->addMessage('album deleted');
-////                    #$this->_redirect('/index/user-data');
-//            $this->view->messages = $this->_helper->flashMessenger->getCurrentMessages();
-//        } else {
-//            $this->_helper->flashMessenger->clearMessages();
-//            $this->_helper->flashMessenger->addMessage('error occured please try again!!');
-//            $this->view->messages = $this->_helper->flashMessenger->getCurrentMessages();
-//        }
         $this->_redirect(BASE_URL . 'admin/gallery');
     }
 
