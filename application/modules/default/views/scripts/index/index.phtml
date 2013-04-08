@@ -20,7 +20,7 @@ $post = new Default_Model_Post();
                         foreach ($slider as $value):
                             $active = ($i == 1) ? 'active' : '';
                             ?>
-                            <div class="<?php echo $active ?> item slider"><img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['post_image']; ?>" alt=""  /></div>
+                            <div class="<?php echo $active ?> item slider"><img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['name']; ?>" alt=""  /></div>
 
 
                             <?php
