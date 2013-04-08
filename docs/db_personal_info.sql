@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2013 at 10:27 AM
+-- Generation Time: Apr 08, 2013 at 11:18 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `tbl_album` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tbl_album`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `tbl_album` (
 
 INSERT INTO `tbl_album` (`id`, `album_name`, `created_date`, `updated_date`) VALUES
 (6, 'Tour', '0000-00-00 00:00:00', NULL),
-(7, 'Seminar', '0000-00-00 00:00:00', NULL);
+(7, 'Seminar', '0000-00-00 00:00:00', NULL),
+(8, 'Slider', '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `tbl_gallery` (
   `post` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_gallery` (`album_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `tbl_gallery`
@@ -73,7 +74,14 @@ INSERT INTO `tbl_gallery` (`id`, `name`, `image_caption`, `album_id`, `created_d
 (33, 'image10.jpg', 'Seminar6', 7, '2013-04-08 07:22:08', 0),
 (34, 'image2.jpg', 'Tour2', 6, '2013-04-08 07:22:29', 1),
 (35, 'image5.jpg', 'Tour3', 6, '2013-04-08 07:22:40', 1),
-(36, 'image9.jpg', 'Tour4', 6, '2013-04-08 07:22:52', 1);
+(36, 'image9.jpg', 'Tour4', 6, '2013-04-08 07:22:52', 1),
+(37, 'slide_basketball.jpg', 'Slide_basketball', 8, '2013-04-08 10:39:03', 1),
+(40, 'slide_cafeteria.jpg', 'Slide_cafeteria', 8, '2013-04-08 10:42:33', 1),
+(41, 'slide_college.jpg', 'Slide_college', 8, '2013-04-08 10:42:47', 1),
+(42, 'slide_graduation.jpg', 'Slide_graduation', 8, '2013-04-08 10:43:05', 1),
+(43, 'slide_lab.jpg', 'Slide_lab', 8, '2013-04-08 10:43:32', 1),
+(44, 'slide_libraries.jpg', 'Slide_libraries', 8, '2013-04-08 10:43:44', 1),
+(45, 'slide_notice.jpg', 'Slide_notice', 8, '2013-04-08 10:43:56', 1);
 
 -- --------------------------------------------------------
 
