@@ -33,7 +33,9 @@ class Default_Model_Post extends Zend_Db_Table_Abstract {
     public function getSideBar($postType) {
         $select = $this->select()
                 ->where("post_type='$postType' and active=1")
-                ->limit(6);
+                ->limit(6)
+                ->order('id DESC');
+        
        
         $sql = $select->query();
                 

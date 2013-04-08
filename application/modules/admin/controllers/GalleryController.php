@@ -26,9 +26,7 @@ class Admin_GalleryController extends Zend_Controller_Action
         // action body
         $albumList=  $this->albumModel->listAlbum();
         $this->view->albumlist=$albumList;
-//        echo '<pre>';
-//        print_r($albumList);
-//        exit;
+
     }
 
     public function addAlbumAction()
