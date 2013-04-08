@@ -2,7 +2,9 @@
 
 class Default_AcademicController extends Zend_Controller_Action
 {
-    private $academic;
+
+    private $academic = null;
+
     public function init()
     {
         /* Initialize action controller here */
@@ -23,6 +25,19 @@ class Default_AcademicController extends Zend_Controller_Action
         $this->view->newsSidebar=$newsSidebar;
     }
 
+    public function detailAction()
+    {
+        // action body
+        echo "hello";
+        exit;
+        $data=$this->_getParam('id');
+        echo "<pre>";
+        print_r($data);
+        exit;
+    }
+
 
 }
+
+
 

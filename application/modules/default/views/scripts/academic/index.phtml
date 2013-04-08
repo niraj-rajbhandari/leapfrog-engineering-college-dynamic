@@ -8,43 +8,30 @@ $contact = $this->contact;
 <title>Academic</title>
 <div class="row-fluid">
     <div id='main_container' class="span12">
-        <h1>Academic | Leapfrog College of Engineering</h1>
-        <div class=" content academic-content span8 pull-left">
+        <h1 class="page-head">Academic | Leapfrog College of Engineering</h1>
+        <hr>
+        <div id="container">
+            <h3>LeapFrog Offers following Academic Courses:</h3>
 
-            <p>Leapfrog College of Engineering offers state-of-the-art technology and best infrastructure within its campus. Students have access to all the resources and equipments necessary for study and research.  </p>
-            <?php
-            if (!empty($academic)):
-                foreach ($academic as $value):
-                    ?>
-                    <h5><?php echo $value['post_title']; ?></h5>
-                    <hr>
-                    <div class="facilities-info">
+            <table >
+                <?php
+                if (!empty($academic)):
+                    foreach ($academic as $value):
+                        ?> 
+                        <tr>
+                            <td><a href="" id="academic-<?php echo $value['id']; ?>" class="academic-content academic-class"><strong>-</strong> <?php echo $value['post_title']; ?></a></td>
+                        </tr>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
 
-                        <div>
-                            <?php
-                            $ex_str = explode(" ", $value['post_body']);
-                            $count = count($ex_str);
-
-                            if ($count > 50) {
-                                $fac = $post->word_limiter($value['post_body'], 50, FALSE);
-                                echo $fac;
-                                ?>
-                                <a href="<?php BASE_URL ?>academic/index/id/<?php echo $value['id']; ?>" class="more-info">More Info &raquo;</a>
-                                <?php
-                            } else {
-                                echo $value['post_body'];
-                            }
-                            ?>
-
-                        </div>    
-                    </div>
-                    <?php
-                endforeach;
-            endif;
-            ?>
+            </table>
 
 
+            <div class="content-area" id="b-info">
 
+            </div>
         </div>
         <div class='recent_news_event'>
 
@@ -159,5 +146,25 @@ $contact = $this->contact;
     </div>
 </div>
 <script type="text/javascript">
-    $('.facilities-info img').addClass("img-polaroid img-rounded content-img");
+    $(document).ready(function() {
+        $('.facilities-info img').addClass("img-polaroid img-rounded content-img");
+        init();
+        $('.academic-class').click(function() {
+            var id = $(this).attr('id');
+            var postId = id.substring(9);
+
+            $.ajax({
+                type: 'POST',
+                data:{postId:postId},
+                url: "<?php echo BASE_URL; ?>/academic/detail" ,
+                dataType: 'text',
+                cache: false,
+                success: function(data) {
+                    alert(data);
+                    return false;
+                }
+            });
+        });
+    });
+
 </script>

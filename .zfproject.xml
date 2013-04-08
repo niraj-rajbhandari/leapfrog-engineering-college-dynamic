@@ -146,6 +146,7 @@
             </controllerFile>
             <controllerFile controllerName="Academic">
               <actionMethod actionName="index"/>
+              <actionMethod actionName="detail"/>
             </controllerFile>
             <controllerFile controllerName="Gallery">
               <actionMethod actionName="index"/>
@@ -200,6 +201,9 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Facilities">
                 <viewScriptFile forActionName="facility"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Academic">
+                <viewScriptFile forActionName="detail"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

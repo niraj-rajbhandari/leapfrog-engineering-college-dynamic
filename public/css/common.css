@@ -30,7 +30,7 @@ html, body, div, a, p, img, ul, li, footer, header, section, h1, span, a img, as
 }
 body {
     width: 100%;
-    font-family: Ubuntu, Georgia, Times New Roman, Times, serif;
+    font-family: Georgia, Times New Roman, Times, serif;
     background: url("../img/dotnoise.png")repeat scroll 0 0 #000000;
     color: #000;
     -webkit-text-size-adjust: 100%;
@@ -40,7 +40,9 @@ h1{
     font-size: 1.6em;
 }
 
-
+#main_container .page-head{
+    margin-left:0px;
+}
 body a {
     color: #000;
 }

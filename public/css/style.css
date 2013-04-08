@@ -31,7 +31,7 @@ html, body, div, a, p, img, ul, li, footer, header, section, h1, span, a img, as
 body {
     width: 100%;
     
-    font-family: Ubuntu, Georgia, Times New Roman, Times, serif;
+   font-family: Georgia, Times New Roman, Times, serif;
     background: url("../img/dotnoise.png")repeat scroll 0 0 #000000;
     color: #000;
     -webkit-text-size-adjust: 100%;
@@ -65,7 +65,7 @@ a, header ul li a:hover {
     font-size: small;
 }
 #contact-info p{
-    font-family: Ubuntu,Georgia;
+    font-family: Georgia;
 }
 #contact-info p:hover{
     
