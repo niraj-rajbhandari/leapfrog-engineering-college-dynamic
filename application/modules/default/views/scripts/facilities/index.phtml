@@ -1,0 +1,163 @@
+<?php
+$facilities = $this->facilitiesInfo;
+$post = new Default_Model_Post();
+$news = $this->newsSidebar;
+$academic = $this->academicSidebar;
+$contact = $this->contact;
+?>
+<title>Facilities</title>
+<div class="row-fluid">
+    <div id='main_container' class="span12">
+        <h1>Facilities | Leapfrog College of Engineering</h1>
+        <div class=" content facility-content span8 pull-left">
+
+            <p>Leapfrog College of Engineering offers state-of-the-art technology and best infrastructure within its campus. Students have access to all the resources and equipments necessary for study and research.  </p>
+            <?php
+            if (!empty($facilities)):
+                foreach ($facilities as $value):
+                    ?>
+                    <h5><?php echo $value['post_title']; ?></h5>
+                    <hr>
+                    <div class="facilities-info">
+
+                        <div>
+                            <?php
+                            $ex_str = explode(" ", $value['post_body']);
+                            $count = count($ex_str);
+
+                            if ($count > 50) {
+                                $fac = $post->word_limiter($value['post_body'], 50, FALSE);
+                                echo $fac;
+                                ?>
+                                <a href="<?php BASE_URL ?>facilities/facility/id/<?php echo $value['id']; ?>" class="more-info">More Info &raquo;</a>
+                                <?php
+                            } else {
+                                echo $value['post_body'];
+                            }
+                            ?>
+
+                        </div>    
+                    </div>
+                    <?php
+                endforeach;
+            endif;
+            ?>
+
+
+
+        </div>
+        <div class='recent_news_event'>
+
+            <div class="span4">
+                <div class="accordion " id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head ">
+                            <a class="accordion-toggle accordion-style" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                <h6>Recent News & Events <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($news)):
+                                    $count = count($news);
+                                    $i = 0;
+                                    foreach ($news as $value):
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
+                                            <?php
+                                            if ($i + 1 === $count):
+                                                ?>
+                                                <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php
+                                        $i++;
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle event-head" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                <h6>Our Mission<i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <li>A passion for excellence</li>
+                                <li>Compassionate commitment </li>
+                                <li>Innovative Spirit </li>
+                                <li>Ability to accept risks and challenges </li>
+                                <li>Competence </li>
+                                <li>Creativity  </li>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                <h6>Academic <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($academic)):
+                                    $count = count($academic);
+                                    $i = 0;
+                                    foreach ($academic as $value):
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo BASE_URL; ?>academic/academic-post/id/<?php echo $value['id']; ?>" class=""><?php echo $value['post_title']; ?></a>
+                                            <?php if ($i + 1 === $count): ?>
+                                                <a href='<?php echo BASE_URL; ?>academic' class='more-info pull-right'>More &raquo;</a>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php
+                                        $i++;
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div>
+                    <?php
+                    if (!empty($contact)):
+                        foreach ($contact as $value):
+                            ?>
+                            <h5><?php echo $value['post_title']; ?></h5>
+                            <hr>
+                            <div id="contact-info">
+                                <?php echo $value['post_body']; ?>
+                            </div>
+
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.facilities-info img').addClass("img-polaroid img-rounded content-img");
+</script>

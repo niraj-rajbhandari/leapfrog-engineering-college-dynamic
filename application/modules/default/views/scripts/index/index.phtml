@@ -1,43 +1,186 @@
-<style>
-    a:link,
-    a:visited
-    {
-        color: #0398CA;
-    }
+<?php
+$homeInfo = $this->homeInfo;
+$about = $this->aboutSidebar;
+$news = $this->newsSidebar;
+$contact = $this->contact;
+$slider = $this->slider;
+$post = new Default_Model_Post();
+?>
+<title>Leapfrog College of Engineering</title>
+<div id='slider'>
+    <div class="row-fluid">
+        <div class="span12">
+            <div id="myCarousel" class="carousel slide">
 
-    span#zf-name
-    {
-        color: #91BE3F;
-    }
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <?php
+                    if (!empty($slider)):
+                        $i = 1;
+                        foreach ($slider as $value):
+                            $active = ($i == 1) ? 'active' : '';
+                            ?>
+                            <div class="<?php echo $active ?> item slider"><img src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['post_image']; ?>" alt=""  /></div>
 
-    div#welcome
-    {
-        color: #FFFFFF;
-        background-image: url(http://framework.zend.com/images/bkg_header.jpg);
-        width:  600px;
-        height: 400px;
-        border: 2px solid #444444;
-        overflow: hidden;
-        text-align: center;
-    }
 
-    div#more-information
-    {
-        background-image: url(http://framework.zend.com/images/bkg_body-bottom.gif);
-        height: 100%;
-    }
-</style>
-<div id="welcome">
-    <h1>Welcome to the <span id="zf-name">Zend Framework!</span></h1>
+                            <?php
+                            $i++;
+                        endforeach;
+                    endif;
+                    ?>
 
-    <h3>This is your project's main page</h3>
+                </div>
 
-    <div id="more-information">
-        <p><img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" /></p>
-        <p>
-            Helpful Links: <br />
-            <a href="http://framework.zend.com/">Zend Framework Website</a> |
-            <a href="http://framework.zend.com/manual/en/">Zend Framework Manual</a>
-        </p>
+                <!-- Carousel nav -->
+                <ol class="carousel-indicators">
+                    <?php
+                    if (!empty($slider)):
+                        $i = 0;
+                        foreach ($slider as $value):
+                            $active = ($i == 0) ? 'active' : '';
+                            ?>
+                            <li data-target="#myCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo $active; ?>"></li>
+                            <?php
+                            $i++;
+                        endforeach;
+                    endif;
+                    ?>
+
+
+
+                </ol>
+
+
+            </div>
+
+        </div>
     </div>
+
+
 </div>
+<div class="row">
+    <div id='main_container' class="span12">
+
+        <div id='principal_message' class="span8">
+            <div class="message-content">
+                <h1><?php echo $homeInfo['post_title']; ?></h1>
+                <?php echo $homeInfo['post_body']; ?>
+            </div>
+        </div>
+        <div class="span4 recent_news_event  pull-right">
+            <div class="span4">
+                <div class="accordion " id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head ">
+                            <a class="accordion-toggle accordion-style" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                <h6>Recent News & Events <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($news)):
+                                    $count = count($news);
+                                    $i = 0;
+                                    foreach ($news as $value):
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
+                                            <?php
+                                            if ($i + 1 === $count):
+                                                ?>
+                                                <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php
+                                        $i++;
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle event-head" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                <h6>Our Mission<i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <li>A passion for excellence</li>
+                                <li>Compassionate commitment </li>
+                                <li>Innovative Spirit </li>
+                                <li>Ability to accept risks and challenges </li>
+                                <li>Competence </li>
+                                <li>Creativity  </li>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                <h6>About Us <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($about)):
+
+                                    foreach ($about as $value):
+                                        ?>
+                                        <li>
+                                            <?php
+                                            $aboutUs = $post->word_limiter($value['post_body'], 40);
+                                            echo $aboutUs;
+                                            ?>
+                                            <a href='<?php echo BASE_URL; ?>about-us' class='more-info pull-right'>More &raquo;</a>
+
+                                        </li>
+                                        <?php
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div>
+                    <?php
+                    if (!empty($contact)):
+                        foreach ($contact as $value):
+                            ?>
+                            <h5><?php echo $value['post_title']; ?></h5>
+                            <hr>
+                            <div id="contact-info">
+                                <?php echo $value['post_body']; ?>
+                            </div>
+
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>    
+
+
+

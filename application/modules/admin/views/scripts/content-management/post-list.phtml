@@ -24,7 +24,8 @@
             <td>
                 <?php echo $value['post_type'];?>
             </td>
-            <td><img class="img-rounded img-polaroid" src="<?php echo BASE_URL; ?>img/uploads/<?php echo $value['post_image']; ?>" width="100px" height="100px"/></td>
+            <?php $image=($value['post_image']!="")?BASE_URL.'img/uploads/'.$value['post_image']:BASE_URL.'img/images.jpeg';?>
+            <td><img class="img-rounded img-polaroid" src="<?php echo $image;?>" width="100px" height="100px"/></td>
              <td>
                 <?php $active=($value['active']==1)?'Yes':'No';?>
                 <?php echo $active;?>

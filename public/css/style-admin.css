@@ -1,0 +1,166 @@
+/* 
+    Document   : style
+    Created on : Mar 11, 2013, 8:55:31 AM
+    Author     : niraj
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#header img{
+    width:100%;
+    height:200px;
+x    width:1288px;
+}
+.left-pull{
+    float:left;
+}
+.required{
+    color:maroon;
+}
+#main{
+    background: antiquewhite;
+}
+
+#log-out{
+    float:right;
+    position:relative;
+    top:-24px;
+    right:25px;
+}
+.box-border{
+   
+    border-radius: 5px;
+}
+
+#log-out a{
+    margin:0px 5px 0px 5px;  
+    text-decoration: none;
+    font-weight: bold;
+    color:#E37FE2;
+}
+#log-out font{
+    color:white;
+}
+#passError,#userError{
+    display:none;
+}
+
+#change_password{
+    float:left;
+}
+.form_label{
+    width:100px;
+}
+
+#footer{
+    text-align: center;
+    vertical-align: middle;
+    height:100px;
+}
+#content{
+    height:300px;
+    padding:10px 200px;
+    margin-left:130px;
+    margin-right:130px;
+    margin-top:10px;
+    background-color:  #BAA69F;
+    border-radius: 5px;
+}
+.clearfix{
+    width:100%;
+}
+
+.section{
+    box-shadow: 3px 3px 3px #7D0019;
+    position:relative;
+    top:50px;
+    float:left;
+    width:300px;
+    margin-left:20px;
+    height:200px;
+    text-align: center;
+    vertical-align: middle;
+    background-color:  background;
+    border-radius: 5px;
+}
+
+
+
+#content a{
+    text-decoration: none;
+    vertical-align: middle;
+    color: brown;
+}
+
+#user-info h3 a{
+    text-decoration: none;
+    font-size: 10pt;
+    color:#BAA69F;
+    
+}
+#user-info h3 a:hover{
+    color:brown;
+}
+#profile-table{
+    width:600px;
+    position:relative;
+    left:40px;
+}
+.profile-pic img{
+    border-radius: 5px;
+}
+
+#user-list{
+    
+    width:100%;
+    text-align: center;
+    vertical-align: middle;
+}
+#user-list thead{
+  color:maroon;  
+}
+#user-list tbody a{
+    text-decoration: none;
+    color: brown;
+}
+.table-form{
+    margin-left: 350px;
+    padding: 10px 10px 10px 60px;
+    width: 400px;
+     background: #BAA69F;
+}
+
+.delete-image{
+    position:relative;
+    top:11px;
+    left:3px;
+}
+/*.edit-image{
+    position:relative;
+    left:248px;
+    top:-235px;
+}*/
+.form-edit-image{
+    position:relative;
+    left:-115px;
+    margin-top:5px;
+}
+.edit-image{
+    position:relative;
+    top:40px;
+    left:20px;
+}
+.image-caption{
+    width:215px;
+}
+.update-image{
+    margin-top:5px;
+}
+ .update-image button{
+    height:25px;
+    position:relative;
+    top:-5px;
+}
+.table-post thead th,.table-post tbody td{
+    text-align: center;
+    vertical-align: top;
+}

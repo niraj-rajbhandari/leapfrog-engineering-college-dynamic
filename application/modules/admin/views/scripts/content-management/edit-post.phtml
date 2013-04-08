@@ -19,7 +19,7 @@
             <tr>
                 <td class="span2">Type:</td>
                 <td class="span8">
-                    <?php $postType = array('post' => 'Post', 'news' => 'News & Events', 'facilities' => 'Facilities'); ?>
+                    <?php $postType = array('home' => 'Home', 'news' => 'News & Events', 'facilities' => 'Facilities','about-us'=>'About us','academic'=>'Academic','contact'=>'Contact'); ?>
                     <select name="post_type">
                         <?php
                         foreach ($postType as $key => $option) :  // run through our array of provinces
@@ -73,5 +73,13 @@
 </div>
 
 <script type="text/javascript">
-    CKEDITOR.replace('post_body');
+    CKEDITOR.replace('post_body',{
+            filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
+            filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?type=Flash',
+            filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+            filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+            filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+            filebrowserWindowWidth : '500',
+            filebrowserWindowHeight : '300'});
 </script>

@@ -1,0 +1,215 @@
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+
+<script>
+    var myCenter = new google.maps.LatLng(27.687492, 85.311389);
+    var myCenter1 = new google.maps.LatLng(27.68737, 85.31122);
+    var pos;
+    var map;
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay;// = new google.maps.DirectionsRenderer();
+
+    function initialize()
+    {
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        var mapProp = {center: myCenter, zoom: 18, mapTypeId: google.maps.MapTypeId.SATELLITE};
+        map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var marker = new google.maps.Marker({position: myCenter, animation: google.maps.Animation.BOUNCE});
+        marker.setMap(map);
+        var infowindow = new google.maps.InfoWindow({content: "LeapFrog College Of Engineering "});
+        infowindow.open(map, marker);
+        infowindow.setOptions({maxWidth: 100});
+        /*var marker1 = new google.maps.Marker({position: myCenter1, draggable: true});
+         marker1.setMap(map);
+         var infowindow = new google.maps.InfoWindow({content: "LeapFrog College Of Engineering "});
+         infowindow.open(map, marker);
+         google.maps.event.addListener(marker1, 'drag', function()
+         {
+         pos = new google.maps.LatLng(this.getPosition().lat(), this.getPosition().lng());
+         var request = {origin: myCenter, destination: 'kathmandu', travelMode: google.maps.DirectionsTravelMode.WALKING};
+         //alert(pos);
+         directionsService.route(request, function(response, status) {
+         if (status == google.maps.DirectionsStatus.OK) {
+         directionsDisplay.setDirections(response);
+         }
+         
+         });
+         });*/
+        //function (event) {pos="("+this.getPosition().lat()+", "+this.getPosition().lng()+")";
+
+        directionDisplay.setMap(map);
+        //alert (pos);
+        //document.getElementById("latbox").value = this.getPosition().lat();
+        //document.getElementById("lngbox").value = this.getPosition().lng();
+        //alert (this.getPosition().lat()+"" +this.getPosition().lng());
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<?php
+$news = $this->newsSidebar;
+$academic = $this->academicSidebar;
+$contact=$this->contact;
+$news=$this->newsSidebar;
+?>
+<title>Contact</title>
+<div class="row-fluid">
+    <div id='main_container' class="span12">
+        <h1>Contact Detail</h1>
+        <div class=" span3">
+            <?php
+            if (!empty($contact)):
+                foreach ($contact as $value):
+                    ?>
+                    <h5><?php echo $value['post_title']; ?></h5>
+                    <hr>
+                    <div id="contact-info">
+                        <?php echo $value['post_body']; ?>
+                    </div>
+
+                    <?php
+                endforeach;
+            endif;
+            ?>
+        </div>
+        <div class="span5">
+            <h5>Feedback | Query Form</h5>
+            <hr>
+            <form class="form-horizontal" method="post" action="<?php echo BASE_URL; ?>contact/feedback">
+                <div class='feedback-form'>
+                    <div class="control-group">
+                        <label class="control-label" for="inputName">Full Name</label>
+                        <div class="controls">
+                            <input type="text" name="inputName" required id="inputName" placeholder="Full Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Email</label>
+                        <div class="controls">
+                            <input type="text" name="inputEmail" required id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputFeedback">Feedback|Query</label>
+                        <div class="controls">
+                            <textarea rows="6" cols="50" name="inputFeedback" required placeholder="Please write your feedback or query"></textarea>
+                        </div>   
+
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-small btn btn-inverse btn-feedback">Send</button>
+            </form>
+        </div>
+
+        <div class='recent_news_event' > 
+            <div class="span4">
+                <div class="accordion " id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head ">
+                            <a class="accordion-toggle accordion-style" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                <h6>Recent News & Events <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($news)):
+                                    $count = count($news);
+                                    $i = 0;
+                                    foreach ($news as $value):
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
+                                            <?php
+                                            if ($i + 1 === $count):
+                                                ?>
+                                                <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php
+                                        $i++;
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle event-head" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                <h6>Our Mission<i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <li>A passion for excellence</li>
+                                <li>Compassionate commitment </li>
+                                <li>Innovative Spirit </li>
+                                <li>Ability to accept risks and challenges </li>
+                                <li>Competence </li>
+                                <li>Creativity  </li>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-group">
+                        <div class="accordion-heading accordian-head">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                <h6>Academic <i class="icon-plus-sign pull-right"></i></h6>
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <?php
+                                if (!empty($academic)):
+                                    $count = count($academic);
+                                    $i = 0;
+                                    foreach ($academic as $value):
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo BASE_URL; ?>academic/academic-post/id/<?php echo $value['id']; ?>" class=""><?php echo $value['post_title']; ?></a>
+                                            <?php if ($i + 1 === $count): ?>
+                                                <a href='<?php echo BASE_URL; ?>academic' class='more-info pull-right'>More &raquo;</a>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php
+                                        $i++;
+                                    endforeach;
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="span4">
+            <h4>Find LCOE</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="span12" id="googleMap" name="MAP">
+
+        <hr>
+    </div>  
+
+</div> 
+<div class="row-fluid">
+    <div class="span12">
+
+    </div>
+</div>

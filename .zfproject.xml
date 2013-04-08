@@ -137,12 +137,35 @@
             <controllerFile controllerName="Error">
               <actionMethod actionName="index"/>
             </controllerFile>
+            <controllerFile controllerName="AboutUs">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+            <controllerFile controllerName="Facilities">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="facility"/>
+            </controllerFile>
+            <controllerFile controllerName="Academic">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+            <controllerFile controllerName="Gallery">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+            <controllerFile controllerName="Contact">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="feedback"/>
+            </controllerFile>
+            <controllerFile controllerName="News">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="newsPost"/>
+            </controllerFile>
           </controllersDirectory>
           <formsDirectory enabled="false"/>
           <layoutsDirectory enabled="false">
             <layoutScriptsDirectory enabled="false"/>
           </layoutsDirectory>
-          <modelsDirectory/>
+          <modelsDirectory>
+            <modelFile modelName="Post"/>
+          </modelsDirectory>
           <viewsDirectory>
             <viewScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Index">
@@ -150,6 +173,33 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Error">
                 <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="AboutUs">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Facilities">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Academic">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Gallery">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Contact">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="News">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Contact">
+                <viewScriptFile forActionName="feedback"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="News">
+                <viewScriptFile forActionName="newsPost"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Facilities">
+                <viewScriptFile forActionName="facility"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>

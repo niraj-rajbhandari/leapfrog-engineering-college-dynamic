@@ -1,166 +1,212 @@
-/* 
-    Document   : style
-    Created on : Mar 11, 2013, 8:55:31 AM
-    Author     : niraj
-    Description:
-        Purpose of the stylesheet follows.
-*/
-#header img{
-    width:100%;
-    height:200px;
-x    width:1288px;
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../fonts/Ubuntu_Light/Ubuntu-Light.eot?") format("eot"), url("../fonts/Ubuntu_Light/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu_Light/Ubuntu-Light.ttf") format("truetype"), url("../fonts/Ubuntu_Light/Ubuntu-Light.svg#Ubuntu-Light") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
-.left-pull{
-    float:left;
+
+@font-face {
+    font-family: "Champagne__amp__Limousines";
+    src: url("../fonts/Champagne__amp__Limousines/Champagne_Limousines.eot?") format("eot"), url("../fonts/Champagne__amp__Limousines/Champagne_Limousines.woff") format("woff"), url("../fonts/Champagne__amp__Limousines/Champagne_Limousines.ttf") format("truetype"), url("../fonts/Champagne__amp__Limousines/Champagne_Limousines.svg#Candice") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
-.required{
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto_Light/Roboto-Light.eot?") format("eot"), url("../fonts/Roboto_Light/Roboto-Light.woff") format("woff"), url("../fonts/Roboto_Light/Roboto-Light.ttf") format("truetype"), url("../fonts/Roboto_Light/Roboto-Light.svg#NeuropolXFree") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, div, a, p, img, ul, li, footer, header, section, h1, span, a img, aside, form, input, article, h2, h3, h4, label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+body {
+    width: 100%;
+    
+    font-family: Ubuntu, Georgia, Times New Roman, Times, serif;
+    background: url("../img/dotnoise.png")repeat scroll 0 0 #000000;
+    color: #000;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.35em;
+}
+h1{
+    font-size: 1.2em;
+}
+body a {
+    color: #000;
+}
+body a:hover, h5:hover {
+    color: maroon;
+}
+
+
+body footer {
+    border-top: dotted 1px #000;
+}
+
+a:hover, header ul a {
+    color: #111;
+}
+a, header ul li a:hover {
+    color: #ff9300;
+}
+
+#contact-info{
+   
+    color: #002957;
+    font-size: small;
+}
+#contact-info p{
+    font-family: Ubuntu,Georgia;
+}
+#contact-info p:hover{
+    
+    color: #1b1b1b;
+}
+.header {
+    float: left;
+    position: fixed;
+    background: url("../img/dotnoise.png")repeat scroll 0 0 #000000;
+    z-index: 999;
+    height: 80px;
+    margin: -150px 0 0 0px;
+    width: 100%;
+}
+.header ul {
+    position:relative;
+    top:34px;
+    left:25px;
+    
+}
+.header ul li {
+    font-size: 10pt;
+    display: inline;
+    margin: 0px 10px;
+}
+
+
+.header-scrolled{
+    box-shadow: 0 1px 0 #D2D2D3, 0 1px 3px rgba(0,0,0,0.2);
+}
+.logo{
+    padding-top:5px;
+}
+.logo a {
+    float: left;
+    font-family:Champagne__amp__Limousines;
+    margin: -18px 0 0 185px;
+    font-size: 3em;
+}
+
+.logo font{
+    float: left;
+    margin: 45px 0 0px -165px;
+    font-size: medium;
+    position:relative;
+    left:166px;
+    top:-14px;
+}
+.logo img{
+    position:relative;
+    left:-125px;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+#slider {
+    width: 960px;
+    height: 300px;
+    margin: 150px 0 0 168px;
+    background: #ffffff;
+    box-shadow: 0px -0.5px 7px 1px #1f1f1f;
+}
+
+#main_container {
+    width:960px;
+    margin: 20px 0 0 170px ;
+
+}
+
+
+#principal_message
+{
+    width: 600px;
+    float: left;
+}
+#principal_message h1{
+    font-family:Champagne__amp__Limousines;
+    letter-spacing:2;
+    font-weight: 1000;
+}
+
+.active{
+    color:#0099cc;
+}
+.message-content{
+    font-size: 10.5pt;
+    text-align: justify;
+}
+#message-content #first-para{
+    margin-left:150px;
+    
+}
+.recent_news_event{
+    margin-top:10px;
+}
+.recent_news_event li{
+    list-style-type: none;
+    font-size: small;
+}
+.recent_news_event h5:hover{
     color:maroon;
 }
-#main{
-    background: antiquewhite;
-}
 
-#log-out{
-    float:right;
-    position:relative;
-    top:-24px;
-    right:25px;
+.more-info{
+    color: #0088cc;
+    margin-left:10px;
+    font-weight: bold;
 }
-.box-border{
-   
-    border-radius: 5px;
-}
-
-#log-out a{
-    margin:0px 5px 0px 5px;  
+.more-info:hover{
+    color:#002957;
     text-decoration: none;
     font-weight: bold;
-    color:#E37FE2;
-}
-#log-out font{
-    color:white;
-}
-#passError,#userError{
-    display:none;
 }
 
-#change_password{
-    float:left;
-}
-.form_label{
-    width:100px;
-}
-
-#footer{
+footer {
+    width: 960px;
     text-align: center;
-    vertical-align: middle;
-    height:100px;
-}
-#content{
-    height:300px;
-    padding:10px 200px;
-    margin-left:130px;
-    margin-right:130px;
-    margin-top:10px;
-    background-color:  #BAA69F;
-    border-radius: 5px;
-}
-.clearfix{
-    width:100%;
+    float: left;
+    margin-left:175px;
+    margin-top:30px;
+    padding: 10px 0 ;
+    border-top: dotted 1px #ddd;
 }
 
-.section{
-    box-shadow: 3px 3px 3px #7D0019;
-    position:relative;
-    top:50px;
-    float:left;
-    width:300px;
-    margin-left:20px;
-    height:200px;
-    text-align: center;
-    vertical-align: middle;
-    background-color:  background;
-    border-radius: 5px;
+/*presentation content*/
+#show-up{
+    margin-top:60px;
+}
+
+#show-up h1{
+    padding-left:335px;
+    padding-bottom: 100px;
+}
+
+#show-up p{
+    font-size: 10em;
+    padding:15px 335px 115px;
+    text-align: justify;
 }
 
 
 
-#content a{
-    text-decoration: none;
-    vertical-align: middle;
-    color: brown;
-}
-
-#user-info h3 a{
-    text-decoration: none;
-    font-size: 10pt;
-    color:#BAA69F;
-    
-}
-#user-info h3 a:hover{
-    color:brown;
-}
-#profile-table{
-    width:600px;
-    position:relative;
-    left:40px;
-}
-.profile-pic img{
-    border-radius: 5px;
-}
-
-#user-list{
-    
-    width:100%;
-    text-align: center;
-    vertical-align: middle;
-}
-#user-list thead{
-  color:maroon;  
-}
-#user-list tbody a{
-    text-decoration: none;
-    color: brown;
-}
-.table-form{
-    margin-left: 350px;
-    padding: 10px 10px 10px 60px;
-    width: 400px;
-     background: #BAA69F;
-}
-
-.delete-image{
-    position:relative;
-    top:11px;
-    left:3px;
-}
-/*.edit-image{
-    position:relative;
-    left:248px;
-    top:-235px;
-}*/
-.form-edit-image{
-    position:relative;
-    left:-115px;
-    margin-top:5px;
-}
-.edit-image{
-    position:relative;
-    top:40px;
-    left:20px;
-}
-.image-caption{
-    width:215px;
-}
-.update-image{
-    margin-top:5px;
-}
- .update-image button{
-    height:25px;
-    position:relative;
-    top:-5px;
-}
-.table-post thead th,.table-post tbody td{
-    text-align: center;
-    vertical-align: top;
-}

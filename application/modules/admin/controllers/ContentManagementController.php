@@ -35,6 +35,13 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
             $upload = new Zend_File_Transfer();
             $files = $upload->getFileInfo();
 
+            //check validation if post image is edited
+            $imageReceive = TRUE;
+            if ($files['post_image']['error'] != 4) {
+                if (!$adapter->receive() && !$adapter->isValid()) {
+                    $imageReceive = FALSE;
+                }
+            }
             //set filters and validators for Zend_Filter_Input
             $filters = array(
                 'post_title' => array('StripTags', 'StringTrim')
@@ -49,7 +56,7 @@ class Admin_ContentManagementController extends Zend_Controller_Action {
             $input = new Zend_Filter_Input($filters, $validators);
             $input->setData($this->getRequest()->getParams());
 
-            if ($adapter->receive() && $adapter->isValid() && $input->isValid()) {
+            if ($imageReceive && $input->isValid()) {
                 $postData = $this->getRequest()->getParams();
                 $active = ($postData['active'] == 'Yes') ? 1 : 0;
 

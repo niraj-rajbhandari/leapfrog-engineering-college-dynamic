@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/bootstrap.min.css"/>
+    <link href="<?php echo BASE_URL;?>css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    
+
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.carousel').carousel({
+                interval: 4000
+            });
+
+
+        });
+
+
+    </script>
+
+
+</head>
+<body >
+
+
+
+
+
+
+    <div class="header">
+
+        <div class="logo">
+            <a href="index.html" title="home" ><img src="img/logo_1.png"/></a>
+
+        </div>
+
+        <ul>
+            <li>
+                <a href="<?php echo BASE_URL; ?>" class='active'>Home</a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>about-us">About Us</a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo BASE_URL; ?>facilities">Facilities</a>
+            </li>
+
+            <li>
+                <a href="<?php echo BASE_URL; ?>academic">Academic</a>
+            </li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>gallery">Gallery</a>
+            </li>
+             <li>
+                    <a href="<?php echo BASE_URL; ?>news">News & Events</a>
+                </li>
+            <li>
+                <a href="<?php echo BASE_URL; ?>contact">Contact</a>
+            </li>
+        </ul>
+
+    </div>
+<?php echo $this->layout()->content; ?>
+
+    
+   
+
+    <!-- footer -->
+    <footer>
+        <small>&COPY; LEAPFROG COLLEGE OF ENGINEERING</small>
+    </footer>
+
+    <!-- close footer-->
+
+</body>
+
+
+</html>
+
