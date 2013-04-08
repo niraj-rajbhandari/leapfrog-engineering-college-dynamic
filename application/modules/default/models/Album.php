@@ -12,6 +12,12 @@ class Default_Model_Album extends Zend_Db_Table_Abstract
         return $result;
     }
     
+    public function getAlbumById($albumId)
+    {
+        $album=$this->fetchRow('id='.$albumId)->toArray();
+        return $album;
+    }
+    
 
 }
 

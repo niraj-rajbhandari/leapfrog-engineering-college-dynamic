@@ -1,13 +1,4 @@
-<?php
-$imageList = $this->imageList;
-$countImage = count($imageList);
-$i = 0;
-$news = $this->newsSidebar;
-$academic = $this->academicSidebar;
-$album = $this->album;
-$contact = $this->contact;
-?>
-
+<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>css/prettyPhoto.css"/>
 <title>Gallery</title>
 <div class="row-fluid"> 
 
@@ -18,9 +9,9 @@ $contact = $this->contact;
             <h2>Album: <?php echo $album['album_name']; ?> </h2>
             <ul class="thumbnails explanation">
                 <?php
+                $countImage = count($imageList);
                 
-                
-                if (count($imageList) > 0):
+                if ($countImage > 0):
                     ?>
                     <?php
                     foreach ($imageList as $value) {
