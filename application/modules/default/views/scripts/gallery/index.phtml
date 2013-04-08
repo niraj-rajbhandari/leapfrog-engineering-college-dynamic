@@ -4,16 +4,16 @@ $albums = $this->album;
 $images = $this->images;
 $i = 0;
 
-$about = $this->about;
+
 $news = $this->newsSidebar;
 $academic = $this->academicSidebar;
 $contact = $this->contact;
 ?>
 <title>Gallery</title>
-<div class="row-fluid">
+<div class="row-fluid"> 
 
     <div id='main_container' class="span12">
-        <div id="container" class="span8">
+        <div class=" content span8">
             <ul class="thumbnails explanation">
                 <?php if (count($albums) > 0): ?>
                     <?php
@@ -26,7 +26,7 @@ $contact = $this->contact;
                         ?>
                         <li class="span6 " >
                             <div class="thumbnail">
-                                <a href="<?php echo BASE_URL; ?>default/gallery/listimages/album-id/<?php echo $value['id']; ?>" class="thumbnail">
+                                <a href="<?php echo BASE_URL; ?>gallery/listimages/album-id/<?php echo $value['id']; ?>" class="thumbnail">
                                     <img src="<?php echo BASE_URL . '/img/uploads/' . $images[$i][0]['name']; ?>" />
 
                                 </a>
@@ -43,114 +43,110 @@ $contact = $this->contact;
                 <?php endif; ?>
             </ul>
 
-
         </div>
-
         <div class='recent_news_event pull-right span4 '>
-            <div class="span4">
-                <div class="accordion " id="accordion2">
-                    <div class="accordion-group">
-                        <div class="accordion-heading accordian-head ">
-                            <a class="accordion-toggle accordion-style" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                <h6>Recent News & Events <i class="icon-plus-sign pull-right"></i></h6>
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                <?php
-                                if (!empty($news)):
-                                    $count = count($news);
-                                    $i = 0;
-                                    foreach ($news as $value):
-                                        ?>
-                                        <li>
-                                            <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
-                                            <?php
-                                            if ($i + 1 === $count):
-                                                ?>
-                                                <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
-                                            <?php endif; ?>
-                                        </li>
-                                        <?php
-                                        $i++;
-                                    endforeach;
-                                endif;
-                                ?>
-                            </div>
-                        </div>
+
+            <div class="accordion " id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading accordian-head ">
+                        <a class="accordion-toggle accordion-style" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            <h6>Recent News & Events <i class="icon-plus-sign pull-right"></i></h6>
+                        </a>
                     </div>
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading accordian-head">
-                            <a class="accordion-toggle event-head" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                <h6>Our Mission<i class="icon-plus-sign pull-right"></i></h6>
-                            </a>
-                        </div>
-                        <div id="collapseTwo" class="accordion-body collapse">
-                            <div class="accordion-inner">
-
-                                <li>A passion for excellence</li>
-                                <li>Compassionate commitment </li>
-                                <li>Innovative Spirit </li>
-                                <li>Ability to accept risks and challenges </li>
-                                <li>Competence </li>
-                                <li>Creativity  </li>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="accordion-group">
-                        <div class="accordion-heading accordian-head">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                                <h6>Academic <i class="icon-plus-sign pull-right"></i></h6>
-                            </a>
-                        </div>
-                        <div id="collapseThree" class="accordion-body collapse">
-                            <div class="accordion-inner">
-                                <?php
-                                if (!empty($academic)):
-                                    $count = count($academic);
-                                    $i = 0;
-                                    foreach ($academic as $value):
-                                        ?>
-                                        <li>
-                                            <a href="<?php echo BASE_URL; ?>academic/academic-post/id/<?php echo $value['id']; ?>" class=""><?php echo $value['post_title']; ?></a>
-                                            <?php if ($i + 1 === $count): ?>
-                                                <a href='<?php echo BASE_URL; ?>academic' class='more-info pull-right'>More &raquo;</a>
-                                            <?php endif; ?>
-                                        </li>
-                                        <?php
-                                        $i++;
-                                    endforeach;
-                                endif;
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div>
-                    <?php
-                    if (!empty($contact)):
-                        foreach ($contact as $value):
-                            ?>
-                            <h5><?php echo $value['post_title']; ?></h5>
-                            <hr>
-                            <div id="contact-info">
-                                <?php echo $value['post_body']; ?>
-                            </div>
-
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div class="accordion-inner">
                             <?php
-                        endforeach;
-                    endif;
-                    ?>
+                            if (!empty($news)):
+                                $count = count($news);
+                                $i = 0;
+                                foreach ($news as $value):
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo BASE_URL; ?>news/news-post/id/<?php echo $value['id']; ?>"><?php echo $value['post_title']; ?></a>
+                                        <?php
+                                        if ($i + 1 === $count):
+                                            ?>
+                                            <a href="<?php echo BASE_URL; ?>news" class="more-info pull-right">More &raquo;</a>
+                                        <?php endif; ?>
+                                    </li>
+                                    <?php
+                                    $i++;
+                                endforeach;
+                            endif;
+                            ?>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
+                <div class="accordion-group">
+                    <div class="accordion-heading accordian-head">
+                        <a class="accordion-toggle event-head" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            <h6>Our Mission<i class="icon-plus-sign pull-right"></i></h6>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        <div class="accordion-inner">
+
+                            <li>A passion for excellence</li>
+                            <li>Compassionate commitment </li>
+                            <li>Innovative Spirit </li>
+                            <li>Ability to accept risks and challenges </li>
+                            <li>Competence </li>
+                            <li>Creativity  </li>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-group">
+                    <div class="accordion-heading accordian-head">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                            <h6>Academic <i class="icon-plus-sign pull-right"></i></h6>
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            <?php
+                            if (!empty($academic)):
+                                $count = count($academic);
+                                $i = 0;
+                                foreach ($academic as $value):
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo BASE_URL; ?>academic/academic-post/id/<?php echo $value['id']; ?>" class=""><?php echo $value['post_title']; ?></a>
+                                        <?php if ($i + 1 === $count): ?>
+                                            <a href='<?php echo BASE_URL; ?>academic' class='more-info pull-right'>More &raquo;</a>
+                                        <?php endif; ?>
+                                    </li>
+                                    <?php
+                                    $i++;
+                                endforeach;
+                            endif;
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div>
+                <?php
+                if (!empty($contact)):
+                    foreach ($contact as $value):
+                        ?>
+                        <h5><?php echo $value['post_title']; ?></h5>
+                        <hr>
+                        <div id="contact-info">
+                            <?php echo $value['post_body']; ?>
+                        </div>
+
+                        <?php
+                    endforeach;
+                endif;
+                ?>
+            </div>
 
 
         </div>

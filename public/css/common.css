@@ -176,6 +176,9 @@ x    text-decoration: underline;
 .content-img{
     margin-right:10px;
 }
+.content h2{
+    font-size: 12pt;
+}
 .page-content{
     margin-top:10px;
 }
